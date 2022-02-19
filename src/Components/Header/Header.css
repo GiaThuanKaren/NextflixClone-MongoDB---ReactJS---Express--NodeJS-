@@ -1,0 +1,86 @@
+.Main-Header{
+    padding: 2px 5px;
+    height: 70px;
+    width: 100%;
+    background-color: #000;
+    color: #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.Logo-Header{
+    width: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+.Header-navigate{
+    display: flex;
+    list-style: none;
+    flex: 1;
+    font-weight: 500;
+}
+
+.icon-bar,
+.icon-Close,
+#idcheck{
+    display: none;
+}
+
+.Header-navigate .Header-navigate-item{
+    min-width: 70px;
+    padding: 0 10px;
+    color: #fff;
+    text-decoration: unset;
+}
+@media (max-width:739px){
+    .Header-navigate{
+        display: list-item;
+        width: 200px;
+        padding: 10px;
+        height: 100vh;
+        position: absolute;
+        top:0;
+        left: 0;
+        z-index: 1;
+        background-color: #000;
+        display: none;
+       
+    }
+    .icon-bar{
+        display: block;
+        font-size: 1.5rem;
+    }
+    .icon-Close{
+        display: block;
+        position: absolute;
+        right: 10px;
+        font-size: 1.4rem;
+        /* padding: 4px; */
+    }
+    .Header-navigate .Header-navigate-item{
+        padding: 10px;
+    }
+    .Logo-Header{
+        display: none;
+    }
+    
+    #idcheck:checked ~ .Header-navigate{
+        display: block;
+        animation: SlideRight ease-in-out 300ms forwards;
+    }
+
+    @keyframes SlideRight {
+        from{
+            opacity: 0;
+            transform: translateX(-100%);
+
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}

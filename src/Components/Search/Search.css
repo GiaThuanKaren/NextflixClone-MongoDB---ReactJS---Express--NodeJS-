@@ -1,0 +1,34 @@
+.Search-Container{
+    line-height: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    position: relative;
+    
+}
+.Input-Search{
+    height: 20px;
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 20px);
+    border-radius: 5px;
+    animation: SlideDown ease-out 300ms forwards;
+}
+@keyframes SlideDown{
+    from{
+        display: none;
+        opacity: 0.3;
+        transform: translateY(-200%);
+    }
+    to{
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width:739px){
+    .Input-Search{
+        height: 30px;
+        width: 90vw;
+    }
+}

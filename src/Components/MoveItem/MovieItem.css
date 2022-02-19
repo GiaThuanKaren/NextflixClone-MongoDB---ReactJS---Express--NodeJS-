@@ -1,0 +1,72 @@
+.MovieItem{
+    /* height: 300px; */
+    position: relative;
+    margin: 10px 0;
+}
+.big{
+    height: 400px;
+}
+.medium{
+    height: 350px;
+}
+.small{
+    height: 300px;
+}
+.Overlay-MovieTiem{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(159deg, rgba(2,0,36,0.6730042358740371) 0%, rgba(68,68,82,0.7682423311121324) 47%);
+    justify-content: center;
+    align-items: center;
+}
+.MovieItem:hover .Overlay-MovieTiem{
+    display: flex;
+    animation: FadeIn ease-in-out 400ms forwards;
+}
+
+.MovieItem:hover {
+    position: relative;
+    z-index: 2;
+    transform: scale(1.2);
+    transition: transform ease-in-out 400ms;
+    cursor: pointer;
+}
+.MovieItem-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+@keyframes FadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.Icon-Play{
+    
+    font-size: 2rem;
+    color: #fff;
+    
+}
+.Icon-Play:hover{
+    transform: scale(1.25);
+    transition: transform ease-in-out 350ms;
+}
+
+@media (max-width:739px){
+    .MovieItem{
+        
+    }
+}

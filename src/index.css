@@ -5,9 +5,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a{
+  display: block;
+}
+html{
+  font-size: 32.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+  caret-color: red;
+}
+
+.primary-btn{
+  min-width: 70px;
+  /* max-width: 200px; */
+  height: 50px;
+  padding: 0 15px;
+  line-height: 50px;
+  text-align: center;
+  background-color: red;
+}
+
+.primary-btn:hover{
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.0);
+  transition: all ease-out 300ms;  
+}
+

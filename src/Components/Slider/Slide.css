@@ -1,0 +1,87 @@
+.Slide-Container{
+    height: 600px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center top ;
+    background-repeat: no-repeat;
+    animation: FadeIn ease-out 1200ms forwards;
+
+}
+.Slide-OverLay{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgb(25,25,25);
+    background: linear-gradient(0deg, rgba(25,25,25,0.8270658605238971) 0%, rgba(41,41,41,0.8085785339526436) 22%, rgba(74,73,73,0.833788617986257) 42%, rgba(0,0,0,0.5172620073419993) 71%, rgba(29,27,27,0.5116597664456408) 81%, rgba(85,79,79,0.3956933115042892) 100%);
+}
+.Slide-Movie-Image{
+    width: 100%;
+    
+}
+.Slide-contend{
+    /* text-shadow: 1px 1px #ccc; */
+    isolation: isolate;    
+    z-index: 1;
+    color: #fff;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 250px;
+    height: 200px;
+    animation: FadeUp ease-out 1200ms forwards;
+
+}
+.Slide-Movie-Name{
+    margin: 10px 0;
+}
+.Slide-btns{
+
+    display: flex;
+    justify-content: space-between;
+}
+.Slide-Movie-Overview{
+    text-align: start;
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* number of lines to show */
+            line-clamp: 5; 
+    -webkit-box-orient: vertical;
+}
+@keyframes FadeUp {
+    from{
+        display: none;
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to{
+        display: block;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes FadeIn {
+    from{
+        display: none;
+        opacity: 0.5;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.MyList-Btn{
+    display: flex;
+    align-items: center;
+}
+
+@keyframes (max-width:739px){
+    .primary-btn{
+        min-width: 150px;
+    }
+}

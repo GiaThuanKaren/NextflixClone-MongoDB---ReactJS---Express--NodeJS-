@@ -1,0 +1,42 @@
+.Main-Container-ListMovie{
+    margin: 0 4px 10px;
+    height: 400px;
+    position: relative;
+    scroll-behavior: smooth;
+    scroll-snap-type: proximity;
+}
+
+.Main-Container-ListMovie::-webkit-scrollbar{
+    display: none;
+    height: 10px;
+}
+
+.Main-ListMovie{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    /* overflow-x: hidden; */
+    padding: 10px 15px ;
+    margin: 5px ;
+    flex-wrap: nowrap;
+    
+}
+.Main-ListMovie::-webkit-scrollbar{
+    display: none;
+}
+.Main-ListMovie:hover{
+    overflow-y: hidden;
+    overflow-x: auto;
+    
+}
+.ListMovie-Tittle{
+    color: #fff;
+}
+@media (max-width:1024px){
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    .Main-Container-ListMovie{
+        height: 400px;
+    }
+}
