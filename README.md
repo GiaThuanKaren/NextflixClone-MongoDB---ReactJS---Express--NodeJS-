@@ -1,3 +1,11 @@
+Demo : https://nextflixclone2022.netlify.app/
+
+# Các chức năng chính của web :
+  - Xem được phim , trailer .
+  - Tìm kiếm thông tin phim . 
+  - Đã responsive trên tablet và mobile
+# Các chức năng dự kiến của web
+  -Có xác thực , đăng nhập , đăng ký bằng Google , Facebook,..
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
