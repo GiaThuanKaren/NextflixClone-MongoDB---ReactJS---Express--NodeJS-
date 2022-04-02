@@ -7,9 +7,11 @@ import Footer from "../../Components/Footer/Footer"
 import  { NavBar } from "../../Components/Header/Header"
 import '../../grid.css';
 import './Detail.css';
+
 import MovieItem from "../../Components/MoveItem/MovieItem";
 import { AddNewIntoCollection, ColrefMyList } from "../../FireBase/Firebase-Config";
 import { addDoc } from "firebase/firestore";
+import NotFound from "../../Components/NotFound/NotFound";
 const CastItem=function({item}){
     
     return (
@@ -25,7 +27,9 @@ const CastItem=function({item}){
 }
 const Detail=function(){
     const EleRef=useRef();
+    const [loading,SetLoading]=useState(false);
     const params = new URLSearchParams(location.search).get('id')
+    
     const Type=new URLSearchParams(location.search).get('type');
     const FetchFuncs=FetchOption.FuncFetchParam
     const [properties,Setproperties]=useState({
@@ -34,8 +38,10 @@ const Detail=function(){
         Moviecredit:[],
         MovieSimilar:[],
         IsLoading:true,
+        IsFetchSuccess:false,
     })
     useEffect(()=>{
+        
          Promise.all([
             fetch(`${Base_Url}${FetchFuncs.FetchDetail(params,Type)}`),
             fetch(`${Base_Url}${FetchFuncs.FetchGetMovie(params,Type)}`),
@@ -47,14 +53,29 @@ const Detail=function(){
             }));
         }).then(function (data) {
             console.log(data);
-            Setproperties({
+            if(data[0].status_code != 34){
                 
-                DetailMovie:data[0],
-                MovieKeyTrailer:data[1].results,
-                Moviecredit:data[2].cast,
-                MovieSimilar:data[3].results,
-                IsLoading:false
-            })
+                Setproperties({
+                    
+                    DetailMovie:data[0],
+                    MovieKeyTrailer:data[1].results,
+                    Moviecredit:data[2].cast,
+                    MovieSimilar:data[3].results,
+                    IsLoading:false,
+                    IsFetchSuccess:true,
+                    
+                })
+            }else {
+                Setproperties({
+                    DetailMovie:{},
+                    MovieKeyTrailer:[],
+                    Moviecredit:[],
+                    MovieSimilar:[],
+                    IsLoading:false,
+                    IsFetchSuccess:false,
+                })
+            }
+            // SetLoading(false);
            
         }).catch(function (error) {
             console.log(error,"Cannot Fetch , Please Referesh Your Page");
@@ -64,14 +85,16 @@ const Detail=function(){
     const {DetailMovie,MovieKeyTrailer,MovieSimilar,Moviecredit}=properties;
     // console.log(DetailMovie,MovieKeyTrailer,MovieSimilar,Moviecredit)
 // console.log("-----------",Detail)
-console.log(properties);
+// console.log(properties);
 
     return (
     <>
-    <NavBar />
     {
-        MovieKeyTrailer.length!=0 ?  
-    <div ref={EleRef} className="Main-Container-Detail-Movie grid">
+        properties.IsLoading == false? 
+            MovieKeyTrailer.length !=0 ?  
+    <>
+    <div ref={EleRef} className={`Main-Container-Detail-Movie grid `}>
+        <NavBar />
         <div className="Banner-Movie">
             <div className="Image-OverLay"></div>
             <img src={`${ImageOption.original}${DetailMovie.backdrop_path}`} />
@@ -105,7 +128,18 @@ console.log(properties);
             </div>
         </div>
         <h3>Trailer {DetailMovie.name || DetailMovie.original_title}</h3>
-        <iframe src={`https://youtube.com/embed/${MovieKeyTrailer[0].key}`} className="Movie-Trailer" />
+        <div className="Movie-trailer-list">
+            {
+                MovieKeyTrailer.map(function(item,idx){
+                    console.log(item)
+                    return (
+                        <>
+                        <iframe src={`https://youtube.com/embed/${item.key}`} className="Movie-Trailer" />
+                        </>
+                    )
+                })
+            }
+        </div>
         <h3>Movie {DetailMovie.name || DetailMovie.original_title}</h3>
         <iframe src={`https://www.2embed.ru/embed/tmdb/movie?id=${DetailMovie.id}`} />
         <h3>Credits</h3>
@@ -117,6 +151,7 @@ console.log(properties);
                 })
             }
         </div>
+        
         <h3>Movie Simimlar</h3>
         <div className="Movie-Simimlar row">
             {MovieSimilar.length!=0 ? MovieSimilar.map(function(item,idx){
@@ -127,15 +162,38 @@ console.log(properties);
                 
                 )
             })
-            : ''
+            : "hi not found"
             }
         </div>
-    </div> 
-    :''
+        <Footer />
+    </div>
+    </> : (
+            <>
+            <NavBar/>
+            <NotFound />
+            <Footer />
+
+            </>
+        )
+    
+    :(
+                <>
+                <div className="center">
+                <div className=" loadingio-spinner-double-ring-t4pzllruwfe"><div className="ldio-aqtjlj40clo">
+                    <div></div>
+                    <div></div>
+                    <div><div>
+                    </div></div>
+                    <div><div>                        
+                    </div></div>
+                    </div>
+                </div>
+                </div>                    
+                </>
+            )
 
     }
    
-    <Footer />
     </>
     )
 }

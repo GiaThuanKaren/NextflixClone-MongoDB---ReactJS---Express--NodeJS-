@@ -25,7 +25,6 @@ function Home(){
     // })
     return (
         <>
-            
             <div className="Main-Home">
             {/* {state.length!=0 && <ListMovieRow Tittle="Recently" CurRecent={state}  />} */}
                 <ListMovieRow Tittle="Up Coming" LinkFetch={Base_Url+FetchOption.fetchUpcoming} size="medium" />

@@ -13,6 +13,9 @@ import Search from '../Search/Search';
 import Slider from '../Slider/Slider';
 
 import './Header.css';
+
+
+
 const MainHome=function(){
     return (
         <>  
