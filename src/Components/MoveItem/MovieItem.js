@@ -6,7 +6,7 @@ import {FontAwesomeIcon, FontAwesomeIcont} from '@fortawesome/react-fontawesome'
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons'
 import {useSelector,useDispatch} from 'react-redux'
 import { SETCURFILM } from "../../Redux/Actions/Actions";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AddNewIntoCollection, ColrefMyList,ColrefViewRecently, MainDB } from "../../FireBase/Firebase-Config";
 function MovieItem({item,size,Type}){
     const dispath=useDispatch();
@@ -19,6 +19,7 @@ function MovieItem({item,size,Type}){
                     // AddNewIntoCollection(ColrefViewRecently,{
                     //     Film:JSON.stringify(item)
                     // })
+                    // <Link to={`/Detail?id=${item.id}&type=${Type}`}></Link>
                     navigate(`/Detail?id=${item.id}&type=${Type}`)
             }}
             className={`MovieItem col l-2 m-3 c-6 ${size} ${Type}`}>

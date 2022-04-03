@@ -12,6 +12,7 @@ import MovieItem from "../../Components/MoveItem/MovieItem";
 import { AddNewIntoCollection, ColrefMyList } from "../../FireBase/Firebase-Config";
 import { addDoc } from "firebase/firestore";
 import NotFound from "../../Components/NotFound/NotFound";
+
 const CastItem=function({item}){
     
     return (
@@ -29,7 +30,6 @@ const Detail=function(){
     const EleRef=useRef();
     const [loading,SetLoading]=useState(false);
     const params = new URLSearchParams(location.search).get('id')
-    
     const Type=new URLSearchParams(location.search).get('type');
     const FetchFuncs=FetchOption.FuncFetchParam
     const [properties,Setproperties]=useState({
@@ -40,6 +40,7 @@ const Detail=function(){
         IsLoading:true,
         IsFetchSuccess:false,
     })
+     
     useEffect(()=>{
         
          Promise.all([
@@ -127,20 +128,20 @@ const Detail=function(){
                
             </div>
         </div>
-        <h3>Trailer {DetailMovie.name || DetailMovie.original_title}</h3>
+        <h3 style={{color:'#fff'}}>Trailer {DetailMovie.name || DetailMovie.original_title}</h3>
         <div className="Movie-trailer-list">
             {
                 MovieKeyTrailer.map(function(item,idx){
                     console.log(item)
                     return (
                         <>
-                        <iframe src={`https://youtube.com/embed/${item.key}`} className="Movie-Trailer" />
+                        <iframe allowFullScreen  src={`https://youtube.com/embed/${item.key}`} className="Movie-Trailer" />
                         </>
                     )
                 })
             }
         </div>
-        <h3>Movie {DetailMovie.name || DetailMovie.original_title}</h3>
+        <h3 style={{color:'#fff'}}>Movie {DetailMovie.name || DetailMovie.original_title}</h3>
         <iframe src={`https://www.2embed.ru/embed/tmdb/movie?id=${DetailMovie.id}`} />
         <h3>Credits</h3>
         <div className="Cast-Movie row">
@@ -157,9 +158,11 @@ const Detail=function(){
             {MovieSimilar.length!=0 ? MovieSimilar.map(function(item,idx){
                     
                 return (
-                
-                    <MovieItem item={item} key={idx} Type={Type} size="small"/>
-                
+                    <React.Fragment>
+                    <MovieItem
+                     
+                    item={item} key={idx} Type={Type} size="small"/>
+                    </React.Fragment>
                 )
             })
             : "hi not found"

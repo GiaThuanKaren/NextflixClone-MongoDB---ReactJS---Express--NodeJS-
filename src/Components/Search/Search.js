@@ -4,6 +4,7 @@ import {fas, faSearch} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function Search(){
     const [IsClosed,SetIsClosed]=useState(false)
     const [Data,SetData]=useState('');

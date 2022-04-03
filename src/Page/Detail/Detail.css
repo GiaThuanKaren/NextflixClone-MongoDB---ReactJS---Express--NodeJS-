@@ -1,3 +1,6 @@
+.Main-Container-Detail-Movie{
+    background-color: #000;
+}
 .center{
     display: flex;
     justify-content: center;
@@ -27,29 +30,46 @@
     background: rgb(25,25,25);
     background: linear-gradient(90deg, rgba(25,25,25,0.5592788140646884) 0%, rgba(74,73,73,0.4052171894148284) 100%);
 }
-
+.Movie-trailer-list::-webkit-scrollbar{
+    height: 0;
+}
 .Cast-Movie{
-    height: 250px;
+    height: 300px;
     overflow-x: scroll;
     overflow-y: hidden;
     flex-wrap: nowrap;
+    
+}
+.Cast-Movie::-webkit-scrollbar{
+    display: none;
+    height: 0;
+    width: 0;
 }
 .Cast-Movie::-webkit-scrollbar{
     display: none;
 }
 .CastItem-image{
-    margin: 2px 5px;
+    width: 100%;
+    height: 90%;
+}
+.CastItem{
+    text-align: center;
+    height: 300px;
+    overflow: hidden;
 }
 .CastItem-image img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     overflow: hidden;
 }
-
+.CastItem-image ~ h3{
+    color: #fff;
+}
 iframe{
     width: 100%;
-    height: 800px
+    height: 800px;
+    border: none;
 }
 .Movie-detail-contend{
     position: absolute;
@@ -147,6 +167,9 @@ iframe{
     margin: 0 10px;
     text-align: center;
 }
+
+
+
 /* //table */
 @media (min-width:740px) and (max-width:1024px){
 
