@@ -6,6 +6,8 @@ Demo : https://nextflixclone2022.netlify.app/
   - Đã responsive trên tablet và mobile
 # Các chức năng dự kiến của web
   -Có xác thực , đăng nhập , đăng ký bằng Google , Facebook,..
+  -Có mục xem gần đây cho từng người dùng 
+  -Có mục gợi ý dựa trên kết quả xem gần đây hoặc tìm kiếm của người dùng
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
