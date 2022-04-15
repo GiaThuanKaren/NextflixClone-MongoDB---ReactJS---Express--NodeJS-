@@ -13,6 +13,8 @@ import Search from '../Search/Search';
 import Slider from '../Slider/Slider';
 
 import './Header.css';
+import User from '../User/User';
+import Login_Register from '../../Page/Login_Register/Login_Register';
 
 
 
@@ -54,6 +56,7 @@ export const NavBar=function(){
             <Link to='/MyList' className="Header-navigate-item">My List</Link>
         </ul>
         <Search />
+        <User />
     </div>
     </>
     )
@@ -72,6 +75,7 @@ function Header(){
                 <Route path="/Detail" element={<Detail /> }/>
                 <Route path="/Search" element={<SearchMovie /> }/>
                 <Route path="/MyList" element={<MyList /> }/>
+                <Route path="/Login_Register" element={<Login_Register/>}></Route>
             </Routes>
 
         </> 

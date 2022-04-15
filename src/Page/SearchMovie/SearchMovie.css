@@ -1,0 +1,7 @@
+.Main-contaner-Search-Page{
+    position: relative;
+}
+button{
+    position: absolute;
+    left: 50%;
+}

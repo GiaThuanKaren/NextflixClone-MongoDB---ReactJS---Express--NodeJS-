@@ -1,0 +1,33 @@
+.User-Profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: red;
+  position: relative;
+  padding: 5px;
+}
+.User-Profile:hover .List-Navbar{
+    transition: all ease-in-out 350ms;
+    display: block;
+}
+.User-Profile .List-Navbar {
+    padding-top: 10px;
+  position: absolute;
+  background-color: black;
+  top: calc(100%);
+  right: 0;
+  z-index: 1;
+  list-style: none;
+  display: none;
+}
+
+.User-Profile .List-Navbar .List-Navbar-Item {
+  padding: 4px;
+  height: 30px;
+  width: 100px;
+}
+.User-Profile .List-Navbar .List-Navbar-Item.List-Navbar-Item:hover {
+  transition: all ease-in-out 400ms;
+  opacity: 0.8;
+  cursor: pointer;
+}

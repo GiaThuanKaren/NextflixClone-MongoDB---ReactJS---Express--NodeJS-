@@ -5,6 +5,7 @@ import Footer from "../../Components/Footer/Footer";
 import { NavBar } from "../../Components/Header/Header";
 import MovieItem from "../../Components/MoveItem/MovieItem";
 import '../../grid.css'
+import './SearchMovie.css'
 function SearchMovie(){
     const params = new URLSearchParams(location.search).get('query')
     const CurState=useSelector((state)=>state);
