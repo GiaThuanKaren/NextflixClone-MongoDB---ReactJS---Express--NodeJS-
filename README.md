@@ -5,10 +5,9 @@ Demo : https://nextflixclone2022.netlify.app/
   - Tìm kiếm thông tin phim . 
   - Đã responsive trên tablet và mobile
 # Các chức năng dự kiến của web
-<<<<<<< HEAD
-  -Có xác thực , đăng nhập , đăng ký bằng Google , Facebook,..
-  -Có mục xem gần đây cho từng người dùng 
-  -Có mục gợi ý dựa trên kết quả xem gần đây hoặc tìm kiếm của người dùng
+  -Có xác thực , đăng nhập , đăng ký bằng Google , Facebook.
+  -Có mục xem gần đây cho từng người dùng.
+  -Có mục gợi ý dựa trên kết quả xem gần đây hoặc tìm kiếm của người dùng.
 =======
   -Có xác thực , đăng nhập , đăng ký bằng Google , Facebook.
   -Có mục xem gần đây cho từng người dùng. 
