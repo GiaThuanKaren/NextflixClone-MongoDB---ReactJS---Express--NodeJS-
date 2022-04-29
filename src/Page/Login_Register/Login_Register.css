@@ -1,4 +1,49 @@
-a{
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.Main-container-Login-Register {
+  background-image: url("https://img5.goodfon.com/original/1920x1080/1/61/fon-netflix-logo-raduga-tsvet-fon-background-skachat-oboi-sk.jpg?d=1");
+  height: 100vh;
+  width: 100%;
+}
+
+.Main-container-Login-Register .Login-Register-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.575);
+    font-size: 1rem !important;
+}
+
+.form-container{
+    width: 300px;
+    background-color: #fff;
+    height: 70%;
+}
+.form-container a{
     text-decoration: none;
-    color: #fff;
+    color: #000;
+}
+.form-container .form-body{
+    height: 100%;
+    padding: 8px 12px;
+}
+.form-container .form-body .form-header{
+    display: flex;
+    justify-content: space-between;
+}
+.form-container-form{
+
+
+}
+
+.form-container-form input{
+ width: 100%;
+ margin: 5px 0;
+ outline: none;
+ padding: 3px 4px;
 }
