@@ -39,6 +39,11 @@ function Home(){
                 <ListMovieRow Tittle="Honor Movie" LinkFetch={Base_Url+FetchOption.FetchHonor} size="small"/>
                 <ListMovieRow Tittle="Romance Movie" LinkFetch={Base_Url+FetchOption.FetchRomanceMovie} size="small"/>            
                 <ListMovieRow Tittle="War Movie" LinkFetch={Base_Url+FetchOption.FetchWar} size="small"/>            
+                <ListMovieRow Tittle="Science Fiction" LinkFetch={Base_Url+FetchOption.FetchScienceFiction} size="small"/>            
+                <ListMovieRow Tittle="Thriller" LinkFetch={Base_Url+FetchOption.fetchThriller} size="small"/>            
+                <ListMovieRow Tittle="Animation" LinkFetch={Base_Url+FetchOption.fetchAnimation} size="small"/>            
+                <ListMovieRow Tittle="Crime" LinkFetch={Base_Url+FetchOption.fetchCrime} size="small"/>            
+
             </div>
         </>
     )

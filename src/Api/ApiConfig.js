@@ -22,6 +22,9 @@ const FetchOption={
     fetchTvToprated:`/tv/top_rated?${ApiKey}`,
     fetchTvOnAir:`/tv/on_the_air?${ApiKey}`,
     fetchTvLastest:`/tv/latest?${ApiKey}`,
+    fetchThriller:`/discover/movie?${ApiKey}&with_genres=53&page=1`,
+    fetchAnimation:`/discover/movie?${ApiKey}&with_genres=16&page=1`,
+    fetchCrime:`/discover/movie?${ApiKey}&with_genres=80&page=1`,
     FuncFetchParam:{
         FetchCredit:function(id,type="movie"){
             return `/${type}/${id}/credits?${ApiKey}`

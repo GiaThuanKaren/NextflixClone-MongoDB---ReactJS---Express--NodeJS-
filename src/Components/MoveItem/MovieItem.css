@@ -36,7 +36,7 @@
 .MovieItem:hover {
     position: relative;
     z-index: 2;
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: transform ease-in-out 400ms;
     cursor: pointer;
 }

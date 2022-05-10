@@ -22,7 +22,7 @@
     
 }
 .Slide-contend{
-    /* text-shadow: 1px 1px #ccc; */
+    text-shadow:  1px rgb(0, 0, 0);
     isolation: isolate;    
     z-index: 1;
     color: #fff;
@@ -52,6 +52,16 @@
             line-clamp: 5; 
     -webkit-box-orient: vertical;
 }
+.btns-slider{
+    font-size: 1.4rem;
+    position: absolute;
+    width: 50px;
+    
+    height: 50px;
+    text-align: center;
+    bottom: 20px;
+    right: 20px;
+}
 @keyframes FadeUp {
     from{
         display: none;
@@ -78,6 +88,7 @@
 .MyList-Btn{
     display: flex;
     align-items: center;
+    padding: 0 15px;
 }
 
 @keyframes (max-width:739px){

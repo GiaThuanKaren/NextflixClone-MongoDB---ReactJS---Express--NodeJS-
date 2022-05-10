@@ -1,82 +1,140 @@
-import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useRef, useState } from 'react';
-import {useNavigate} from 'react-router-dom'
-import { useDispatch } from 'react-redux';
-import { ImageOption } from '../../Api/ApiConfig';
-import { SETCURFILM } from '../../Redux/Actions/Actions';
-import './Slide.css'
-import { AddNewIntoCollection, ColrefViewRecently } from '../../FireBase/Firebase-Config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
-function Slider({LinkFetch}){
-    let tmp;
-    const dispath=useDispatch();
-    const navigate=useNavigate();
-    const [CurData, SetCurData]= useState([])
-    const EleRef=useRef();
-    const TimeCur=useRef();
-    useEffect(()=>{
-        fetch(LinkFetch)
-            .then(res=>res.json())
-            .then(function(items){
-                console.log(items.results)
-                let st1=LinkFetch.includes('/movie')
-                let st2=LinkFetch.includes('/tv');
-                
-                if(st1) tmp="movie";
-                else tmp="tv";
-                SetCurData(items.results);
-            })
-            .catch(function(e){
-                console.log(e,"Lỗi")
-            })
-    },[])
-    let rand=Math.floor(Math.random()*CurData.length-1);
-    const curitem=CurData[Math.abs(rand)];
-    return (
+import { faCodeBranch, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useRef, useState, useMemo } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Base_Url, ImageOption, FetchOption } from "../../Api/ApiConfig";
+import { SETCURFILM } from "../../Redux/Actions/Actions";
+import "./Slide.css";
+import {
+  AddNewIntoCollection,
+  ColrefViewRecently,
+} from "../../FireBase/Firebase-Config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faExclamationCircle,
+  faVolumeMute,
+  faPlay
+} from "@fortawesome/free-solid-svg-icons";
+
+function Slider({ LinkFetch }) {
+  let tmp;
+  const [active, SetActive] = useState(false);
+  const dispath = useDispatch();
+  const navigate = useNavigate();
+  const [CurData, SetCurData] = useState([]);
+  const EleRef = useRef();
+  const TimeCur = useRef();
+  const [curitem, Setcuritem] = useState({});
+  const [key, setkey] = useState([]);
+  const GetVolumeTrailer = function () {
+    console.log("click");
+    SetActive(!active);
+  };
+  useEffect(() => {
+    let rand;
+
+    fetch(LinkFetch)
+      .then((res) => res.json())
+      .then(function (items) {
+        console.log(items.results);
+        let st1 = LinkFetch.includes("/movie");
+        let st2 = LinkFetch.includes("/tv");
+        if (st1) tmp = "movie";
+        else tmp = "tv";
+        rand = Math.floor(Math.random() * items.results.length - 1);
+        Setcuritem(items.results[rand]);
+        // SetCurData(items.results);
+        return items.results[rand];
+      })
+      .then(function (items) {
+        console.log("Promise muc 3 ", items);
+        fetch(
+          `${Base_Url}${FetchOption.FuncFetchParam.FetchGetMovie(
+            items.id,
+            "movie"
+          )}`
+        )
+          .then(function (item) {
+            return item.json();
+          })
+          .then(function (item) {
+            console.log(item);
+            setkey(items.results);
+          });
+      })
+      .catch(function (e) {
+        console.log(e, "Lỗi");
+      });
+  }, []);
+
+  //   const curitem = CurData[Math.abs(rand)];
+  return (
     <>
-        {CurData.length==0 ? '' :
-        <div 
-        style={{
-            backgroundImage:`url(${ImageOption.original}${curitem.backdrop_path})`
-        }}
-        className="Slide-Container  ">  
-        <div className="Slide-OverLay"></div>
-        <div className="Slide-contend">
-            <h1 className="Slide-Movie-Name">{curitem.name || curitem.original_name || curitem.original_title}</h1>
-            <div className="Slide-btns">
-                <div 
-                onClick={()=>{
+      {curitem.length == 0 ? (
+        ""
+      ) : (
+        <>
+          
+          <div
+            style={{
+              backgroundImage: `url(${ImageOption.original}${curitem.backdrop_path})`,
+            }}
+            className="Slide-Container  "
+          >
+            <div className="Slide-OverLay"></div>
+            <div className="Slide-contend">
+              <h1 className="Slide-Movie-Name">
+                {curitem.name ||
+                  curitem.original_name ||
+                  curitem.original_title}
+              </h1>
+              <div className="Slide-btns">
+                <div
+                  style={{backgroundColor:'#FFFF',color:'#000000'}}
+                  onClick={() => {
                     // AddNewIntoCollection(ColrefViewRecently,{
                     //     Film:JSON.stringify(curitem)
                     // })
 
                     dispath(SETCURFILM(curitem));
-                    navigate(`/Detail?id=${curitem.id}&type=movie`)
-                }}
-                className="Play-Btn primary-btn">
-                    <h4>Play Now</h4>
+                    navigate(`/Detail?id=${curitem.id}&type=movie`);
+                  }}
+                  className="Play-Btn MyList-Btn primary-btn"
+                >
+                  <FontAwesomeIcon  icon={faPlay} />
+                  <h4>Play Now</h4>
                 </div>
-                <div 
-                onClick={()=>{
-                    navigate(`/Detail?id=${curitem.id}&type=movie`)
-                }}
-                className="MyList-Btn primary-btn">
-                    <h4>More Info
-                    </h4>
-                    <FontAwesomeIcon icon={faExclamationCircle} />
-                    
+
+                <div
+                style={{backgroundColor:'#5D5C58',color:'#FFFFFF'}}
+                  onClick={() => {
+                    navigate(`/Detail?id=${curitem.id}&type=movie`);
+                  }}
+                  className="MyList-Btn primary-btn"
+                >
+                  <h4>More Info</h4>
+                  <FontAwesomeIcon icon={faExclamationCircle} />
                 </div>
+              </div>
+              <h5 className="Slide-Movie-Overview">{curitem.overview}</h5>
             </div>
-            <h5 className="Slide-Movie-Overview" > 
-               {curitem.overview}
-            </h5>
-        </div>
-    </div> 
-        }
-     
+            <div
+              onClick={GetVolumeTrailer}
+              className="btns-slider"
+              style={{ color: "white" }}
+            >
+              {active ? (
+                <FontAwesomeIcon icon={faVolumeUp} />
+              ) : (
+                <FontAwesomeIcon icon={faVolumeMute} />
+              )}
+            </div>
+            {/* <FontAwesomeIcon icon=() /> */}
+          </div>
+        </>
+      )}
     </>
-    )
+  );
 }
 
 export default Slider;
