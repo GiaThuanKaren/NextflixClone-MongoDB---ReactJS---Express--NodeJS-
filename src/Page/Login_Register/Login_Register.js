@@ -240,7 +240,7 @@ export const RegisterComponent = function () {
                 <div className="form-container-form">
                   <h3>Create your account:</h3>
                   <input
-                    style={{ margin: "5px 0", border: "1px" }}
+                    style={{ margin: "5px 0", border: "1px solid #ccc" }}
                     className="input-login-form"
                     required
                     placeholder="Email của bạn"
@@ -249,7 +249,7 @@ export const RegisterComponent = function () {
                   />
 
                   <input
-                    style={{ margin: "5px 0" }}
+                    style={{ margin: "5px 0",border: "1px solid #ccc" }}
                     className="input-login-form"
                     required
                     placeholder="Nhập mật khẩu"
