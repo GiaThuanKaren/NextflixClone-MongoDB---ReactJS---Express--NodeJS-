@@ -12,7 +12,7 @@ const User=function(){
     <div className="User-Profile">
         <ul className="List-Navbar">
             <li className="List-Navbar-Item">Profie</li>
-            <Link className="List-Navbar-Item" to="/Login_Register">Login</Link>
+            <Link className="List-Navbar-Item" to="/Login_Register/login">Login</Link>
             <li className="List-Navbar-Item">Uprage</li>
         </ul>   
     </div>

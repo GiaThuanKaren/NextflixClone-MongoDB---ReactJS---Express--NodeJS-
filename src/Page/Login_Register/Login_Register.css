@@ -2,7 +2,16 @@ a {
   text-decoration: none;
   color: #fff;
 }
-
+.active {
+  color: rgb(9, 113, 248);
+  /* text-shadow: 1px 4px #ccc; */
+}
+p {
+  font-weight: 500;
+}
+.unactive {
+  color: rgb(204, 197, 197);
+}
 .Main-container-Login-Register {
   background-image: url("../../asser/loginbg.jpg");
   height: 100vh;
@@ -10,40 +19,115 @@ a {
 }
 
 .Main-container-Login-Register .Login-Register-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.329);
-    font-size: 1rem !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.329);
+  font-size: 1rem !important;
 }
 
-.form-container{
-    width: 300px;
-    background-color: #fff;
-    height: 70%;
+.form-container {
+  padding: 10px;
+  width: 300px;
+  /* background-color: #fff; */
+  /* min-height: 50%; */
+  height: 40%;
+  background-color: #000;
+  box-shadow: 2px 2px 8px rgb(31, 30, 30);
 }
-.form-container a{
-    text-decoration: none;
-    color: #000;
+.form-container a {
+  text-decoration: none;
+  color: #000;
 }
-.form-container .form-body{
-    height: 100%;
-    padding: 8px 12px;
+.form-container .form-body {
+  height: 100%;
+  padding: 8px 12px;
+  display: flex;
+  color: #fff;
+  /* align-content: space-between; */
+  justify-content: space-between;
+  flex-direction: column;
 }
-.form-container .form-body .form-header{
-    display: flex;
-    justify-content: space-between;
+.form-container .form-body .form-header {
+  display: flex;
+  justify-content: space-between;
 }
-.form-container-form{
+.form-container-form {
+}
+
+.form-container-form input {
+  width: 100%;
+  margin: 5px 0;
+  outline: none;
+  padding: 3px 4px;
+}
+.input-login-form {
+  outline: none;
+  border: none;
+  padding: 5px 3px;
+  height: 30px;
+}
+
+.Main-container-Login-Register .Main-Regis-Container {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.Choose-Plan-Container {
+  height: 100px;
+  /* width: 100px; */
+  /* background-color: red; */
+}
+
+.Choose-Plan-Body {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Choose-Plan-Body .Choose-Plan-Body-List {
+  display: flex;
+  list-style: none;
+  flex-basis: 50%;
+  justify-content: space-around;
+}
+
+.Choose-Plan-Body .Choose-Plan-Body-List .Choose-Plan-Body-List-item {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  font-weight: 500;
+  background-color: rgb(72, 186, 252);
+}
+.Choose-Plan-Body .Choose-Plan-Body-List .Choose-Plan-Body-List-item.active {
+  background-color: rgb(9, 113, 248);
+}
+.Choose-Plan-Body .Choose-Plan-Body-List .Choose-Plan-Body-List-item:hover {
+  background-color: rgb(9, 113, 248);
+}
+
+.Choose-Plan-List-Permissions .Choose-Plan-List-Permissions-item {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  border-bottom: 2px solid #ccc;
+  margin: 8px 0;
+}
+.Choose-Plan-List-Permissions
+  .Choose-Plan-List-Permissions-item
+  .Choose-Plan-List-Permissions-item-benefit {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: space-around;
+}
 
 
-}
-
-.form-container-form input{
- width: 100%;
- margin: 5px 0;
- outline: none;
- padding: 3px 4px;
+.Regist_form_Container{
+  width: 50%;
 }
