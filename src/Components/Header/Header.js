@@ -18,6 +18,7 @@ import Login_Register, {
   LoginComponent,
   RegisterComponent,
 } from "../../Page/Login_Register/Login_Register";
+import { useSelector } from "react-redux";
 
 const MainHome = function () {
   return (
@@ -71,6 +72,7 @@ export const NavBar = function () {
   );
 };
 function Header() {
+  
   const [state, SetState] = useState(false);
   const Handle = function () {
     SetState(!state);
@@ -87,6 +89,7 @@ function Header() {
         <Route path="/Login_Register" element={<Login_Register />}>
           <Route path="regis" element={<RegisterComponent />} />
           <Route path="login" element={<LoginComponent />} />
+          <Route path="logout" element={<LoginComponent />} />
         </Route>
       </Routes>
     </>

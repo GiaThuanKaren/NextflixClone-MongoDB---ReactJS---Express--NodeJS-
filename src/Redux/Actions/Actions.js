@@ -5,3 +5,11 @@ export const SETCURFILM=function(data){
         payload:data
     }
 }
+
+export const SETLOGIN=function(data){
+    console.log("Login Func ",data)
+    return {
+        type:'SetLog',
+        payload:data
+    }
+}

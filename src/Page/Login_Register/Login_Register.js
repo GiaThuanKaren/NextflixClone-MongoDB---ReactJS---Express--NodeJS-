@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, Outlet, Route, Routes, useRoutes } from "react-router-dom";
+import { Link, Outlet, Route, Routes, useNavigate, useRoutes } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
 import { NavBar } from "../../Components/Header/Header";
 import * as IconSolid from "@fortawesome/free-solid-svg-icons";
 import "../../grid.css";
 import "./Login_Register.css";
 import "./responsive.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { SETCURFILM, SETLOGIN } from "../../Redux/Actions/Actions";
 export const LoginComponent = function () {
   return (
     <>
@@ -55,9 +57,55 @@ export const LoginComponent = function () {
 };
 
 export const RegisterComponent = function () {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const ArrSelecttion = ["Basic", "Standar", "Premium"];
-
+  const [properties, Setproperties] = useState({
+    Email: "",
+    Pass: "",
+    Submit: false,
+    isSucced:false,
+  });
+  const Dispatch = useDispatch();
+  
+  // const
+  useEffect(() => {
+    if (properties.Submit) {
+      fetch(
+        `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&regis`,
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      )
+        .then((item) => item.json())
+        .then(function (item) {
+          console.log(item);
+          if (item.result == "DUPLICATE") {
+            alert("Tài Khoản Đã Tồn Tại Trong Hệ Thống");
+            Setproperties({
+              ...properties,
+              Submit: false,
+            });
+          } else {
+            Setproperties({
+              ...properties,
+              isSucced:true,
+            });
+            Dispatch(SETLOGIN(true));
+            navigate('/');
+            alert("Dăng ký Thành Công");
+          }
+        })
+        .catch(function (e) {
+          console.log("Error Fetch");
+        });
+    }
+  }, [properties.Submit]);
   return (
     <>
       <div className="Main-Regis-Container">
@@ -228,7 +276,6 @@ export const RegisterComponent = function () {
                 </div>
               </div>
             </div>
-
             <div className="Regist_form_Container">
               <div className="form-body">
                 <div className="form-header">
@@ -240,6 +287,13 @@ export const RegisterComponent = function () {
                 <div className="form-container-form">
                   <h3>Create your account:</h3>
                   <input
+                    onChange={(e) => {
+                      Setproperties({
+                        ...properties,
+                        Email: e.target.value,
+                      });
+                    }}
+                    value={properties.Email}
                     style={{ margin: "5px 0", border: "1px solid #ccc" }}
                     className="input-login-form"
                     required
@@ -249,7 +303,14 @@ export const RegisterComponent = function () {
                   />
 
                   <input
-                    style={{ margin: "5px 0",border: "1px solid #ccc" }}
+                    onChange={(e) => {
+                      Setproperties({
+                        ...properties,
+                        Pass: e.target.value,
+                      });
+                    }}
+                    value={properties.Pass}
+                    style={{ margin: "5px 0", border: "1px solid #ccc" }}
                     className="input-login-form"
                     required
                     placeholder="Nhập mật khẩu"
@@ -257,6 +318,12 @@ export const RegisterComponent = function () {
                   />
                 </div>
                 <div
+                  onClick={(e) => {
+                    Setproperties({
+                      ...properties,
+                      Submit: true,
+                    });
+                  }}
                   className="primary-btn"
                   style={{
                     color: "#ffff",
@@ -277,8 +344,11 @@ export const RegisterComponent = function () {
   );
 };
 
+const Logout=function(){
+  
+}
+
 const Login_Register = function () {
-  useRoutes;
   return (
     <>
       <NavBar />

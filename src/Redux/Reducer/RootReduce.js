@@ -1,6 +1,7 @@
 const InitialState={
     CurFilm:{},
-    ViewRecently:[]
+    ViewRecently:[],
+    isLogin:false,
 }
 const rootReducer=function(state=InitialState,action){
     switch(action.type){
@@ -27,7 +28,12 @@ const rootReducer=function(state=InitialState,action){
                 ViewRecently:arr
             }
         }
-            
+        case 'SetLog':{
+            return {
+                ...state,
+                isLogin:action.payload
+            }
+        }
         default:{
             return state
         }

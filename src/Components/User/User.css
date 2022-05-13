@@ -12,9 +12,11 @@
 .User-Profile:hover .List-Navbar{
     transition: all ease-in-out 350ms;
     display: block;
+    background-color: rgb(0, 0, 0);
 }
 .User-Profile .List-Navbar {
-    padding-top: 10px;
+  /* padding-top: 10px; */
+  padding: 10px 5px 10px;
   position: absolute;
   background-color: black;
   top: calc(100%);
@@ -22,6 +24,8 @@
   z-index: 1;
   list-style: none;
   display: none;
+  width: 100px;
+
 }
 
 .User-Profile .List-Navbar .List-Navbar-Item {
