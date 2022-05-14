@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "../../grid.css";
 import "./User.css";
@@ -6,6 +6,8 @@ import "./User.css";
 const User = function () {
   const selectState = useSelector((state) => state);
   console.log(selectState);
+  const dispatch = useDispatch();
+  // const  
   return (
     <>
       <div className="User-Profile">
@@ -13,9 +15,9 @@ const User = function () {
           <li className="List-Navbar-Item">Profie</li>
           {selectState.isLogin ? (
             <>
-              <Link className="List-Navbar-Item" to="/Login_Register/login">
+              <li className="List-Navbar-Item" >
                 Logout
-              </Link>
+              </li>
               <li className="List-Navbar-Item">Upgrade</li>
             </>
           ) : (

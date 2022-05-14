@@ -1,5 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, Outlet, Route, Routes, useNavigate, useRoutes } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  Route,
+  Routes,
+  useNavigate,
+  useRoutes,
+} from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
 import { NavBar } from "../../Components/Header/Header";
 import * as IconSolid from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +17,59 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { SETCURFILM, SETLOGIN } from "../../Redux/Actions/Actions";
 export const LoginComponent = function () {
+  const navigate=useNavigate();
+  const Dispatch =useDispatch();
+  const [properties, Setproperties] = useState({
+    Email: "",
+    Pass: "",
+    Submit: false,
+    isSucced: false,
+  });
+  useEffect(() => {
+    if (properties.Submit) {
+      fetch(
+        `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&login`,
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      )
+        .then((item) => item.json())
+        .then(function (item) {
+          console.log(item);
+          if (item.result == "NO ACOUNT") {
+            alert("Tài Khoản Không Có Trong Hệ Thống");
+            Setproperties({
+              ...properties,
+              Submit: false,
+            });
+          } else {
+            console.log(
+              "Co tai khoan ",
+              item.result[0].pass == properties.Pass
+            );
+            if (item.result[0].pass == properties.Pass) {
+              alert("Dăng Nhập Thành Công");
+              navigate("/");
+              console.log("Dung tai khoan");
+              Dispatch(SETLOGIN(true));
+            } else {
+              Setproperties({
+                ...properties,
+                Submit: false,
+              });
+            }
+          }
+        })
+        .catch(function (e) {
+          console.log("Error Fetch");
+        });
+    }
+  }, [properties.Submit]);
   return (
     <>
       <div className="form-container">
@@ -20,6 +80,12 @@ export const LoginComponent = function () {
           </div>
           <div className="form-container-form">
             <input
+              onChange={(e) => {
+                Setproperties({
+                  ...properties,
+                  Email: e.target.value,
+                });
+              }}
               className="input-login-form"
               required
               placeholder="Email của bạn"
@@ -28,6 +94,12 @@ export const LoginComponent = function () {
             />
 
             <input
+              onChange={(e) => {
+                Setproperties({
+                  ...properties,
+                  Pass: e.target.value,
+                });
+              }}
               className="input-login-form"
               required
               placeholder="Nhập mật khẩu"
@@ -35,6 +107,12 @@ export const LoginComponent = function () {
             />
           </div>
           <div
+            onClick={(e) => {
+              Setproperties({
+                ...properties,
+                Submit: true,
+              });
+            }}
             className="primary-btn"
             style={{ color: "#ffff", fontWeight: "bold" }}
           >
@@ -64,10 +142,10 @@ export const RegisterComponent = function () {
     Email: "",
     Pass: "",
     Submit: false,
-    isSucced:false,
+    isSucced: false,
   });
   const Dispatch = useDispatch();
-  
+
   // const
   useEffect(() => {
     if (properties.Submit) {
@@ -94,10 +172,10 @@ export const RegisterComponent = function () {
           } else {
             Setproperties({
               ...properties,
-              isSucced:true,
+              isSucced: true,
             });
             Dispatch(SETLOGIN(true));
-            navigate('/');
+            navigate("/");
             alert("Dăng ký Thành Công");
           }
         })
@@ -344,9 +422,7 @@ export const RegisterComponent = function () {
   );
 };
 
-const Logout=function(){
-  
-}
+const Logout = function () {};
 
 const Login_Register = function () {
   return (
