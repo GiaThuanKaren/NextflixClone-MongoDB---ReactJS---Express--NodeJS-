@@ -70,7 +70,7 @@ function Slider({ LinkFetch }) {
   //   const curitem = CurData[Math.abs(rand)];
   return (
     <>
-      {curitem.length == 0 ? (
+      {curitem==null ? (
         ""
       ) : (
         <>
