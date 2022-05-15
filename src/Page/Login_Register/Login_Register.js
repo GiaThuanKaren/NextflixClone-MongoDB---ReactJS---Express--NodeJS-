@@ -40,7 +40,7 @@ export const LoginComponent = function () {
       )
         .then((item) => item.json())
         .then(function (item) {
-          console.log(item);
+          console.log(item.result[0].viewRecently);
           if (item.result == "NO ACOUNT") {
             alert("Tài Khoản Không Có Trong Hệ Thống");
             Setproperties({
@@ -54,9 +54,12 @@ export const LoginComponent = function () {
             );
             if (item.result[0].pass == properties.Pass) {
               alert("Dăng Nhập Thành Công");
-              navigate("/");
-              console.log("Dung tai khoan");
               Dispatch(SETLOGIN(true));
+              navigate("/");
+              let itemData= item.result[0].viewRecently ?? [];
+              localStorage.setItem("recent",JSON.stringify(itemData))
+              localStorage.setItem("user",JSON.stringify(item.result[0].email))
+              console.log("Dung tai khoan");
             } else {
               Setproperties({
                 ...properties,
@@ -174,8 +177,8 @@ export const RegisterComponent = function () {
               ...properties,
               isSucced: true,
             });
-            Dispatch(SETLOGIN(true));
-            navigate("/");
+            // Dispatch(SETLOGIN(true));
+            navigate("/Login_Register/login");
             alert("Dăng ký Thành Công");
           }
         })

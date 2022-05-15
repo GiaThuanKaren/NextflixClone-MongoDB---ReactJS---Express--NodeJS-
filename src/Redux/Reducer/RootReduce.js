@@ -1,7 +1,7 @@
 const InitialState={
     CurFilm:{},
     ViewRecently:[],
-    isLogin:false,
+    isLogin: localStorage.getItem('user') ? true : false,
 }
 const rootReducer=function(state=InitialState,action){
     switch(action.type){

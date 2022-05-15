@@ -11,7 +11,6 @@ import Footer from "../Footer/Footer";
 import ListMovieRow from "../ListMovieRow/ListMovieRow";
 import Search from "../Search/Search";
 import Slider from "../Slider/Slider";
-
 import "./Header.css";
 import User from "../User/User";
 import Login_Register, {
@@ -34,6 +33,7 @@ const MainHome = function () {
 export const NavBar = function () {
   const navigate = useNavigate();
   const [close, SetClose] = useState(false);
+  const GlobalState = useSelector(state=> state);
   return (
     <>
       <div className="Main-Header">
@@ -61,9 +61,13 @@ export const NavBar = function () {
             Up Coming
           </Link>
           <li className="Header-navigate-item">News</li>
-          <Link to="/MyList" className="Header-navigate-item">
-            My List
-          </Link>
+          {
+            GlobalState.isLogin? (
+              <Link to="/MyList" className="Header-navigate-item">
+                My List
+              </Link>
+            ): ""
+          }
         </ul>
         <Search />
         <User />

@@ -13,3 +13,10 @@ export const SETLOGIN=function(data){
         payload:data
     }
 }
+export const SETVIEWRECENTLY=function(data){
+    console.log("Set ViewRecently",data)
+    return {
+        type:"SetViewRecently",
+        payload: data
+    }
+}

@@ -6,8 +6,8 @@ const ImageOption={
 }
 const FetchOption={
     fetchUpcoming:`/movie/upcoming?${ApiKey}`,
-    fetchTrending:`/trending/all/week?${ApiKey}`,
     fetchTrendingDay:`/trending/all/day?${ApiKey}`,
+    fetchTrending:`/trending/all/week?${ApiKey}`,
     fetchNextFlixOriginal:`/discover/movie?${ApiKey}`,
     FetchtopRated:`/movie/top_rated?${ApiKey}`,
     FetchActionMovie:`/discover/movie?${ApiKey}&with_genres=28&page=1`,

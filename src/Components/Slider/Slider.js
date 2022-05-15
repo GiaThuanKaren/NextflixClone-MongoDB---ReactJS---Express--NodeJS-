@@ -1,7 +1,7 @@
 import { faCodeBranch, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Base_Url, ImageOption, FetchOption } from "../../Api/ApiConfig";
 import { SETCURFILM } from "../../Redux/Actions/Actions";
 import "./Slide.css";
@@ -13,11 +13,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faExclamationCircle,
   faVolumeMute,
-  faPlay
+  faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Slider({ LinkFetch }) {
   let tmp;
+  const GlobalState= useSelector(state=>state)
   const [active, SetActive] = useState(false);
   const dispath = useDispatch();
   const navigate = useNavigate();
@@ -46,22 +47,7 @@ function Slider({ LinkFetch }) {
         // SetCurData(items.results);
         return items.results[rand];
       })
-      .then(function (items) {
-        console.log("Promise muc 3 ", items);
-        fetch(
-          `${Base_Url}${FetchOption.FuncFetchParam.FetchGetMovie(
-            items.id,
-            "movie"
-          )}`
-        )
-          .then(function (item) {
-            return item.json();
-          })
-          .then(function (item) {
-            console.log(item);
-            setkey(items.results);
-          });
-      })
+
       .catch(function (e) {
         console.log(e, "Lỗi");
       });
@@ -70,11 +56,10 @@ function Slider({ LinkFetch }) {
   //   const curitem = CurData[Math.abs(rand)];
   return (
     <>
-      {curitem==null ? (
+      {curitem == null ? (
         ""
       ) : (
         <>
-          
           <div
             style={{
               backgroundImage: `url(${ImageOption.original}${curitem.backdrop_path})`,
@@ -90,24 +75,33 @@ function Slider({ LinkFetch }) {
               </h1>
               <div className="Slide-btns">
                 <div
-                  style={{backgroundColor:'#FFFF',color:'#000000'}}
+                  style={{ backgroundColor: "#FFFF", color: "#000000" }}
                   onClick={() => {
                     // AddNewIntoCollection(ColrefViewRecently,{
                     //     Film:JSON.stringify(curitem)
                     // })
-
-                    dispath(SETCURFILM(curitem));
+                    if (!GlobalState.isLogin) {
+                      alert("Vui Lòng Đăng Nhập");
+                      
+                      return;
+                    }else SetViewRecently(item);
+                    // dispath(SETCURFILM(curitem));
                     navigate(`/Detail?id=${curitem.id}&type=movie`);
                   }}
                   className="Play-Btn MyList-Btn primary-btn"
                 >
-                  <FontAwesomeIcon  icon={faPlay} />
+                  <FontAwesomeIcon icon={faPlay} />
                   <h4>Play Now</h4>
                 </div>
 
                 <div
-                style={{backgroundColor:'#5D5C58',color:'#FFFFFF'}}
+                  style={{ backgroundColor: "#5D5C58", color: "#FFFFFF" }}
                   onClick={() => {
+                    if (!GlobalState.isLogin) {
+                      alert("Vui Lòng Đăng Nhập");
+                      return;
+                      
+                    } else SetViewRecently(item);
                     navigate(`/Detail?id=${curitem.id}&type=movie`);
                   }}
                   className="MyList-Btn primary-btn"

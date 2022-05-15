@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "../../grid.css";
+import { SETLOGIN } from "../../Redux/Actions/Actions";
 import "./User.css";
 
 const User = function () {
@@ -12,10 +13,15 @@ const User = function () {
     <>
       <div className="User-Profile">
         <ul className="List-Navbar">
-          <li className="List-Navbar-Item">Profie</li>
+          <li className="List-Navbar-Item">Change User</li>
           {selectState.isLogin ? (
             <>
-              <li className="List-Navbar-Item" >
+              <li onClick={()=>{
+                alert("Đăng xuất thành công")
+                localStorage.removeItem('recent');
+                localStorage.removeItem('user');
+                dispatch(SETLOGIN(false))
+              }} className="List-Navbar-Item" >
                 Logout
               </li>
               <li className="List-Navbar-Item">Upgrade</li>
