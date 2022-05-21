@@ -15,6 +15,7 @@ import {
   faVolumeMute,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
+import { SetViewRecently } from "../../Api/CommonFunctionAndVar";
 
 function Slider({ LinkFetch }) {
   let tmp;
@@ -84,7 +85,7 @@ function Slider({ LinkFetch }) {
                       alert("Vui Lòng Đăng Nhập");
                       
                       return;
-                    }else SetViewRecently(item);
+                    }else SetViewRecently(curitem);
                     // dispath(SETCURFILM(curitem));
                     navigate(`/Detail?id=${curitem.id}&type=movie`);
                   }}
@@ -101,7 +102,8 @@ function Slider({ LinkFetch }) {
                       alert("Vui Lòng Đăng Nhập");
                       return;
                       
-                    } else SetViewRecently(item);
+                    } 
+
                     navigate(`/Detail?id=${curitem.id}&type=movie`);
                   }}
                   className="MyList-Btn primary-btn"

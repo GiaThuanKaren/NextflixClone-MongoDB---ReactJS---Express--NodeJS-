@@ -15,7 +15,10 @@ import {
   MainDB,
 } from "../../FireBase/Firebase-Config";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 function Home() {
+  const GlobalState = useSelector(state=>state);
+  console.log("Global State in Home Page ---",GlobalState)
   const [recentView, SetrecentView] = useState(() => {
     let storeLocal = JSON.parse(localStorage.getItem("recent")) ?? [];
     console.log("local recent ", storeLocal);
@@ -25,7 +28,7 @@ function Home() {
   return (
     <>
       <div className="Main-Home">
-        {recentView.length != 0 && (
+        {recentView.length != 0 && GlobalState.isLogin && (
           <ListMovieRow
             Tittle="Recently"
             CurRecent={recentView}

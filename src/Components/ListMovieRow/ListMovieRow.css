@@ -1,43 +1,63 @@
-.Main-Container-ListMovie{
-    /* margin: 0 4px 10px; */
-    height: 340px;
-    position: relative;
-    scroll-behavior: smooth;
-    scroll-snap-type: proximity;
+.Main-Container-ListMovie {
+  /* margin: 0 4px 10px; */
+  height: 340px;
+  position: relative;
+  scroll-behavior: smooth;
+  scroll-snap-type: proximity;
+}
+.ModalOverview-Container {
+  top: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(34, 34, 34, 0.959);
+  position: fixed;
+  display: flex;
+  justify-content: center;
 }
 
-.Main-Container-ListMovie::-webkit-scrollbar{
-    display: none;
-    height: 10px;
+.ModalOverview-Container .ModalOverview-Body {
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  position: relative;
+}
+.ModalOverview-Container .ModalOverview-Body .Icon-close-ModalOverview {
+  position: absolute;
+  font-size: 1.2rem;
+  padding: 0 2px;
+  right: 0;
+}
+.Main-Container-ListMovie::-webkit-scrollbar {
+  display: none;
+  height: 10px;
 }
 
-.Main-ListMovie{
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: auto;
-    /* overflow-x: hidden; */
-    padding: 10px 15px ;
-    margin: 5px ;
-    flex-wrap: nowrap;
-    
+.Main-ListMovie {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+  /* overflow-x: hidden; */
+  padding: 10px 15px;
+  margin: 5px;
+  flex-wrap: nowrap;
 }
-.Main-ListMovie::-webkit-scrollbar{
+.Main-ListMovie::-webkit-scrollbar {
+  display: none;
+}
+.Main-ListMovie:hover {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.ListMovie-Tittle {
+  color: #fff;
+  margin: 0px 20px;
+}
+@media (max-width: 1024px) {
+  ::-webkit-scrollbar {
     display: none;
-}
-.Main-ListMovie:hover{
-    overflow-y: hidden;
-    overflow-x: auto;
-    
-}
-.ListMovie-Tittle{
-    color: #fff;
-    margin: 0px 20px;
-}
-@media (max-width:1024px){
-    ::-webkit-scrollbar{
-        display: none;
-    }
-    .Main-Container-ListMovie{
-        height: 400px;
-    }
+  }
+  .Main-Container-ListMovie {
+    height: 400px;
+  }
 }

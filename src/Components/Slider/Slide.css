@@ -24,7 +24,7 @@
 .Slide-contend{
     text-shadow:  1px rgb(0, 0, 0);
     isolation: isolate;    
-    z-index: 1;
+    z-index: 10;
     color: #fff;
     position: absolute;
     top: 40%;

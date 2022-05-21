@@ -17,7 +17,20 @@ import {
   MainDB,
 } from "../../FireBase/Firebase-Config";
 import { SetViewRecently } from "../../Api/CommonFunctionAndVar";
-function MovieItem({ item, size, Type }) {
+
+const ModalOveView=function(){
+
+  return(
+    <>
+    <div className="ModalOverView">
+    <h1>Modal Overview</h1>
+    </div>
+    </>
+  )
+}
+
+
+function MovieItem({ item, size, Type,func }) {
   const GlobalState = useSelector((state) => state);
   //   console.log(GlobalState)
   const dispath = useDispatch();
@@ -28,19 +41,17 @@ function MovieItem({ item, size, Type }) {
         onClick={() => {
           if (!GlobalState.isLogin) {
             alert("Vui Lòng Đăng Nhập");
-            
+            func({
+              item:item,
+              isClose:true
+            });
             return;
           }else SetViewRecently(item);
-          // dispath(SETCURFILM(item));
-          // dispath(SETVIEWRECENTLY(item))?
-          // AddNewIntoCollection(ColrefViewRecently,{
-          //     Film:JSON.stringify(item)
-          // })
-          // <Link to={`/Detail?id=${item.id}&type=${Type}`}></Link>
           navigate(`/Detail?id=${item.id}&type=${Type}`);
         }}
         className={`MovieItem col l-2 m-3 c-6 ${size} ${Type}`}
       >
+        {/* <ModalOveView/> */}
         <div className="Overlay-MovieTiem">
           <FontAwesomeIcon className="Icon-Play" icon={faPlayCircle} />
         </div>

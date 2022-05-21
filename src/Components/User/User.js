@@ -8,20 +8,23 @@ const User = function () {
   const selectState = useSelector((state) => state);
   console.log(selectState);
   const dispatch = useDispatch();
-  // const  
+  // const
   return (
     <>
       <div className="User-Profile">
         <ul className="List-Navbar">
-          <li className="List-Navbar-Item">Change User</li>
           {selectState.isLogin ? (
             <>
-              <li onClick={()=>{
-                alert("Đăng xuất thành công")
-                localStorage.removeItem('recent');
-                localStorage.removeItem('user');
-                dispatch(SETLOGIN(false))
-              }} className="List-Navbar-Item" >
+              <li className="List-Navbar-Item">Change User</li>
+              <li
+                onClick={() => {
+                  alert("Đăng xuất thành công");
+                  localStorage.removeItem("recent");
+                  localStorage.removeItem("user");
+                  dispatch(SETLOGIN(false));
+                }}
+                className="List-Navbar-Item"
+              >
                 Logout
               </li>
               <li className="List-Navbar-Item">Upgrade</li>

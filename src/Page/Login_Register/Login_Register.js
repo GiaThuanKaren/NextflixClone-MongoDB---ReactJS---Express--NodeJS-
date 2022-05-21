@@ -17,8 +17,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { SETCURFILM, SETLOGIN } from "../../Redux/Actions/Actions";
 export const LoginComponent = function () {
-  const navigate=useNavigate();
-  const Dispatch =useDispatch();
+  const navigate = useNavigate();
+  const Dispatch = useDispatch();
   const [properties, Setproperties] = useState({
     Email: "",
     Pass: "",
@@ -56,9 +56,12 @@ export const LoginComponent = function () {
               alert("Dăng Nhập Thành Công");
               Dispatch(SETLOGIN(true));
               navigate("/");
-              let itemData= item.result[0].viewRecently ?? [];
-              localStorage.setItem("recent",JSON.stringify(itemData))
-              localStorage.setItem("user",JSON.stringify(item.result[0].email))
+              let itemData = item.result[0].viewRecently ?? [];
+              localStorage.setItem("recent", JSON.stringify(itemData));
+              localStorage.setItem(
+                "user",
+                JSON.stringify(item.result[0].email)
+              );
               console.log("Dung tai khoan");
             } else {
               Setproperties({
