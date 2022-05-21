@@ -11,15 +11,15 @@ export function SetViewRecently(movietiem) {
     else Store.pop();
   }
   let itemLocal = JSON.stringify(Store);
-  localStorage.setItem("recent", itemLocal);
-  fetch(`http://localhost:81/backend/Api/Customer.php?recent`, {
+  let user=JSON.parse(localStorage.getItem('user'));
+  fetch(`http://localhost:81/backend/Api/Customer.php?recent&user=${user}`, {
     method: "POST",
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body:JSON.stringify(123)
-  })
-    
+    body: JSON.stringify(Store),
+  });
+  localStorage.setItem("recent", itemLocal);
 }
