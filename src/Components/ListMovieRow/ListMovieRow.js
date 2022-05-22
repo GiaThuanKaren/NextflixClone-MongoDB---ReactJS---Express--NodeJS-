@@ -20,7 +20,21 @@ const ModalOverview = function ({ items, setClosingFunc }) {
             icon={IconSolid.faTimes}
           />
           <div className="ModalOverview-Image">
-            <img width="100%" height="200px" style={{objectFit:"cover"}} src={ImageOption.w500 + items.backdrop_path} />
+            <img
+              width="100%"
+              height="10%"
+              src={items.backdrop_path?  ImageOption.original + items.backdrop_path : 'https://taxreform.dof.gov.ph/wp-content/uploads/2019/07/no-thumbnail-medium.png'}
+            />
+          </div>
+          <div className="ModalOverview-Contend">
+            <h1>{items.name || items.original_name || items.original_title || items.tittle}</h1>
+            <div style={{display: 'flex'}}>
+              <p>Khớp 88%</p>
+              <p>2022</p>
+              <p>18+</p>
+              <p>1g 23p</p>
+              <p> 5.1</p>
+            </div>
           </div>
         </div>
       </div>
