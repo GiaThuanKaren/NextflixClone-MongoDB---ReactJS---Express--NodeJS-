@@ -1,13 +1,13 @@
-import './grid.css'
-import './App.css';
+import "./grid.css";
+import "./App.css";
 
-import Header from './Components/Header/Header';
-import { useSelector } from 'react-redux';
+import MainComponent from "./Components/Header/Header";
+import { useSelector } from "react-redux";
 function App() {
-  console.log(useSelector((state)=>state))
+  // console.log(useSelector((state) => state));
   return (
     <div className="App grid">
-        <Header/>
+      <MainComponent />
     </div>
   );
 }

@@ -75,7 +75,7 @@ export const NavBar = function () {
     </>
   );
 };
-function Header() {
+function MainComponent() {
   
   const [state, SetState] = useState(false);
   const Handle = function () {
@@ -100,4 +100,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default MainComponent;

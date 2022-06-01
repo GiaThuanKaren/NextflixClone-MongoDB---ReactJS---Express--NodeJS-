@@ -28,18 +28,27 @@ export const LoginComponent = function () {
   useEffect(() => {
     if (properties.Submit) {
       fetch(
-        `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&login`,
+        // `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&login`
+        `http://localhost:5000/login`
+        ,
+
         {
+          
           method: "POST",
           mode: "cors",
           headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
+          body:JSON.stringify({
+            Email:properties.Email,
+            pass:properties.Pass,
+          })
         }
       )
         .then((item) => item.json())
         .then(function (item) {
+          console.log("OKELOGIN");
           console.log(item.result[0].viewRecently);
           if (item.result == "NO ACOUNT") {
             alert("Tài Khoản Không Có Trong Hệ Thống");
