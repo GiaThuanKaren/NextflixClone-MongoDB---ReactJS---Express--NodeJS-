@@ -90,7 +90,6 @@ function MainComponent() {
         <Route path="/Login_Register" element={<Login_Register />}>
           <Route path="regis" element={<RegisterComponent />} />
           <Route path="login" element={<LoginComponent />} />
-          <Route path="logout" element={<LoginComponent />} />
         </Route>
         <Route element={<PrivateRoute />}>
           <Route path="/MyList" element={<MyList />} />
