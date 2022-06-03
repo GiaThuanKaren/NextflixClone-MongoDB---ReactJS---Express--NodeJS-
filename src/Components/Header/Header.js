@@ -18,8 +18,9 @@ import Login_Register, {
   RegisterComponent,
 } from "../../Page/Login_Register/Login_Register";
 import { useSelector } from "react-redux";
+import PrivateRoute from "../../Routes/PrivateRoute";
 
-const MainHome = function () {
+export const MainHome = function () {
   return (
     <>
       <NavBar />
@@ -33,7 +34,7 @@ const MainHome = function () {
 export const NavBar = function () {
   const navigate = useNavigate();
   const [close, SetClose] = useState(false);
-  const GlobalState = useSelector(state=> state);
+  const GlobalState = useSelector((state) => state);
   return (
     <>
       <div className="Main-Header">
@@ -61,13 +62,13 @@ export const NavBar = function () {
             Up Coming
           </Link>
           <li className="Header-navigate-item">News</li>
-          {
-            GlobalState.isLogin? (
-              <Link to="/MyList" className="Header-navigate-item">
-                My List
-              </Link>
-            ): ""
-          }
+          {GlobalState.isLogin ? (
+            <Link to="/MyList" className="Header-navigate-item">
+              My List
+            </Link>
+          ) : (
+            ""
+          )}
         </ul>
         <Search />
         <User />
@@ -76,25 +77,25 @@ export const NavBar = function () {
   );
 };
 function MainComponent() {
-  
   const [state, SetState] = useState(false);
   const Handle = function () {
     SetState(!state);
   };
   return (
     <>
-      {/* <NavBar/> */}
-
       <Routes>
-        <Route path="/" element={<MainHome />} />
         <Route path="/Detail" element={<Detail />} />
         <Route path="/Search" element={<SearchMovie />} />
-        <Route path="/MyList" element={<MyList />} />
+
         <Route path="/Login_Register" element={<Login_Register />}>
           <Route path="regis" element={<RegisterComponent />} />
           <Route path="login" element={<LoginComponent />} />
           <Route path="logout" element={<LoginComponent />} />
         </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/MyList" element={<MyList />} />
+        </Route>
+        <Route path="/" element={<MainHome />} />
       </Routes>
     </>
   );
