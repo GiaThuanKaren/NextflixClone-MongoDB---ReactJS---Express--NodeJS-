@@ -15,7 +15,7 @@ const ModalOverview = function ({ items, setClosingFunc }) {
       <div className="ModalOverview-Container">
         <div className="ModalOverview-Body">
           <FontAwesomeIcon
-            onClick={setClosingFunc}
+            // onClick={setClosingFunc}
             className="Icon-close-ModalOverview"
             icon={IconSolid.faTimes}
           />
@@ -85,21 +85,7 @@ function ListMovieRow({ LinkFetch, Tittle, CurRecent, size }) {
   return (
     <>
       <div className="Main-Container-ListMovie">
-        {close.isClose ? (
-          <>
-            <ModalOverview
-              setClosingFunc={() => {
-                SetClose({
-                  ...close,
-                  isClose: false,
-                });
-              }}
-              items={close.item}
-            />
-          </>
-        ) : (
-          ""
-        )}
+        
         <h3 className="ListMovie-Tittle">{Tittle}</h3>
         {properties.ArrCur.length == 0 ? (
           ""

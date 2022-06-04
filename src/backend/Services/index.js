@@ -6,7 +6,8 @@ const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 const port = 5000
-
+const { Connect } = require('./config/indexDB')
+Connect();
 Routes(app);
 // Routes(app);
 app.listen(port, () => {

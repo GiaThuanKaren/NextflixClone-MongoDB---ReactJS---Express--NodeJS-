@@ -29,56 +29,35 @@ export const LoginComponent = function () {
     if (properties.Submit) {
       fetch(
         // `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&login`
-        `http://localhost:5000/login`
-        ,
-
+        `http://localhost:5000/login`,
         {
-          
           method: "POST",
           mode: "cors",
           headers: {
-            'Content-Type': 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded',
+            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-          body:JSON.stringify({
-            Email:properties.Email,
-            pass:properties.Pass,
-          })
+          body: JSON.stringify({
+            Email: properties.Email,
+            pass: properties.Pass,
+          }),
         }
       )
         .then((item) => item.json())
         .then(function (item) {
-          console.log("OKELOGIN",item);
+          console.log("OKELOGIN", item);
+        
+          let user=JSON.parse(Object.keys(item.data)[0]) ;
+          Dispatch(SETLOGIN(true));
+          // let itemData = item.result[0].viewRecently ?? [];
+          localStorage.setItem("recent", JSON.stringify([]));
+          localStorage.setItem(
+            "user",
+            JSON.stringify(user)
+          );
+          navigate("/");
           // console.log(item.result[0].viewRecently);
-          if (item.result == "NO ACOUNT") {
-            alert("Tài Khoản Không Có Trong Hệ Thống");
-            Setproperties({
-              ...properties,
-              Submit: false,
-            });
-          } else {
-            console.log(
-              "Co tai khoan ",
-              item.result[0].pass == properties.Pass
-            );
-            if (item.result[0].pass == properties.Pass) {
-              alert("Dăng Nhập Thành Công");
-              Dispatch(SETLOGIN(true));
-              navigate("/");
-              let itemData = item.result[0].viewRecently ?? [];
-              localStorage.setItem("recent", JSON.stringify(itemData));
-              localStorage.setItem(
-                "user",
-                JSON.stringify(item.result[0].email)
-              );
-              console.log("Dung tai khoan");
-            } else {
-              Setproperties({
-                ...properties,
-                Submit: false,
-              });
-            }
-          }
+          
         })
         .catch(function (e) {
           console.log("Error Fetch");
