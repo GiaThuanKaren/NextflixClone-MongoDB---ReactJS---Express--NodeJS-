@@ -48,8 +48,8 @@ export const LoginComponent = function () {
       )
         .then((item) => item.json())
         .then(function (item) {
-          console.log("OKELOGIN");
-          console.log(item.result[0].viewRecently);
+          console.log("OKELOGIN",item);
+          // console.log(item.result[0].viewRecently);
           if (item.result == "NO ACOUNT") {
             alert("Tài Khoản Không Có Trong Hệ Thống");
             Setproperties({
