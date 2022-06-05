@@ -15,7 +15,8 @@ Demo : https://nextflixclone2022.netlify.app/
   
   -Gợi ý tự động các bộ phim dựa trên các tựa đề phim mà người dùng xem gần đây.
   
-# Run npm run startServer to start Node Js Server at port 5000
+# Run 
+  - " npm run startServer " to start Node Js Server at port 5000
   
 
 # Getting Started with Create React App
