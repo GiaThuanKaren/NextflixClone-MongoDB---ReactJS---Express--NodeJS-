@@ -4,13 +4,14 @@ Demo : https://nextflixclone2022.netlify.app/
   - Xem được phim , trailer .
   - Tìm kiếm thông tin phim . 
   - Đã responsive trên tablet và mobile
+  - Đã kết nối đc đến MoongoDB , cho phép đăng ký , đăng nhâp , đăng xuất
+  - Lưu kết quả xem gần đây
 
 ===============================================
 
 # Up Comming Feature
 
   -Có xác thực , đăng nhập , đăng ký bằng Google , Facebook.
-  -Có mục xem gần đây cho từng người dùng. 
   -Gợi ý tự động các bộ phim dựa trên các tựa đề phim mà người dùng xem gần đây.
   
 >>>>>>> 796533a98f58a91dde7fc7691402c8e439449372
