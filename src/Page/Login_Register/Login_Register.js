@@ -38,7 +38,7 @@ export const LoginComponent = function () {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: JSON.stringify({
-            Email: properties.Email,
+            Email: properties.Email.toLowerCase(),
             pass: properties.Pass,
           }),
         }
@@ -46,21 +46,28 @@ export const LoginComponent = function () {
         .then((item) => item.json())
         .then(function (item) {
           console.log("OKELOGIN", item);
-        
-          let user=JSON.parse(Object.keys(item.data)[0]) ;
-          Dispatch(SETLOGIN(true));
+          switch (item.code) {
+            case 200: {
+              Dispatch(SETLOGIN(true));
+              localStorage.setItem("recent", JSON.stringify(item.payload.ViewRecent));
+              localStorage.setItem("user", JSON.stringify({
+                Email:item.payload.Email,
+                Pass : item.payload.pass,
+              }));
+              navigate("/");
+              break;
+            }
+          }
+          // let user = JSON.parse(Object.keys(item.data)[0]);
+          // Dispatch(SETLOGIN(true));
           // let itemData = item.result[0].viewRecently ?? [];
-          localStorage.setItem("recent", JSON.stringify([]));
-          localStorage.setItem(
-            "user",
-            JSON.stringify(user)
-          );
-          navigate("/");
+          // 
+          // localStorage.setItem("user", JSON.stringify(user));
+          // 
           // console.log(item.result[0].viewRecently);
-          
         })
         .catch(function (e) {
-          console.log("Error Fetch");
+          console.log("Error Fetch",e);
         });
     }
   }, [properties.Submit]);
@@ -144,33 +151,44 @@ export const RegisterComponent = function () {
   useEffect(() => {
     if (properties.Submit) {
       fetch(
-        `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&regis`,
+        // `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&regis`,
+        `http://localhost:5000/register`,
         {
           method: "POST",
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+            "Content-Type": "application/x-www-form-urlencoded",
           },
+          body: JSON.stringify({
+            Email: properties.Email.toLowerCase(),
+            Pass: properties.Pass,
+            Plan: ArrSelecttion[active],
+          }),
         }
       )
         .then((item) => item.json())
         .then(function (item) {
           console.log(item);
-          if (item.result == "DUPLICATE") {
-            alert("Tài Khoản Đã Tồn Tại Trong Hệ Thống");
-            Setproperties({
-              ...properties,
-              Submit: false,
-            });
-          } else {
-            Setproperties({
-              ...properties,
-              isSucced: true,
-            });
-            // Dispatch(SETLOGIN(true));
-            navigate("/Login_Register/login");
-            alert("Dăng ký Thành Công");
+          switch (item.code) {
+            case 200: {
+              alert("Đăng ký Thành Công");
+              navigate("/Login_Register/login");
+              break;
+            }
+            case 201: {
+              alert(item.status);
+              Setproperties({
+                Email: "",
+                Pass: "",
+                Submit: false,
+              });
+              break;
+            }
+
+            default: {
+              throw new Error().message;
+            }
           }
         })
         .catch(function (e) {
@@ -391,6 +409,7 @@ export const RegisterComponent = function () {
                 </div>
                 <div
                   onClick={(e) => {
+                    console.log("Clcik ing");
                     Setproperties({
                       ...properties,
                       Submit: true,

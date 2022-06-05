@@ -12,14 +12,5 @@ export function SetViewRecently(movietiem) {
   }
   let itemLocal = JSON.stringify(Store);
   let user=JSON.parse(localStorage.getItem('user'));
-  fetch(`http://localhost:81/backend/Api/Customer.php?recent&user=${user}`, {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: JSON.stringify(Store),
-  });
   localStorage.setItem("recent", itemLocal);
 }

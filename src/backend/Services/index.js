@@ -1,7 +1,7 @@
 const express = require('express')
 const Routes = require('./Routes/index')
 // const route
-
+// const cors = require()
 const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
