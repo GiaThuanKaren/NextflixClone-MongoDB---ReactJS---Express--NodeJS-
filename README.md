@@ -12,9 +12,12 @@ Demo : https://nextflixclone2022.netlify.app/
 # Up Comming Feature
 
   -Có xác thực , đăng nhập , đăng ký bằng Google , Facebook.
+  
   -Gợi ý tự động các bộ phim dựa trên các tựa đề phim mà người dùng xem gần đây.
   
->>>>>>> 796533a98f58a91dde7fc7691402c8e439449372
+# Run npm run startServer to start Node Js Server at port 5000
+  
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
