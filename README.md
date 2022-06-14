@@ -21,6 +21,8 @@ Demo : https://nextflixclone2022.netlify.app/
   
 # Run 
   - " npm run startServer " to start Node Js Server at port 5000
+  - " npm start " to run React JS at port 3000
+ 
   
 
 # Getting Started with Create React App
