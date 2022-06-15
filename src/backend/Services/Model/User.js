@@ -6,6 +6,7 @@ const User = new Schema(
     ViewRecent: { type: String,default:""},
     Email: { type: String,required:true },
     Plan: { type: String ,default:"Basic",required:true},
+    Accesstoken:{ type: Array ,default:null},
   },
   {
     timestamps: true,
