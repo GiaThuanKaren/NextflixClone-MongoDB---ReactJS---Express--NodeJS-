@@ -15,7 +15,7 @@ import "./Login_Register.css";
 import "./responsive.css";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {AES,DES} from "crypto-js"
+import { AES, DES } from "crypto-js";
 import { SETCURFILM, SETLOGIN } from "../../Redux/Actions/Actions";
 import Key from "../../util/Key";
 export const LoginComponent = function () {
@@ -50,15 +50,24 @@ export const LoginComponent = function () {
           console.log("OKELOGIN", item);
           switch (item.code) {
             case 200: {
-              const TakeAccessTokenEncrypt=AES.encrypt(item.accesstoken,Key.Decode_Key).toString();
+              const TakeAccessTokenEncrypt = AES.encrypt(
+                item.accesstoken,
+                Key.Decode_Key
+              ).toString();
               Dispatch(SETLOGIN(true));
-              localStorage.setItem("recent", JSON.stringify(item.payload.ViewRecent));
-              localStorage.setItem("user", JSON.stringify({
-                
-                Email:item.payload.Email,
-                Accesstoken:TakeAccessTokenEncrypt
-
-              }));
+              localStorage.setItem(
+                "recent",
+                JSON.stringify(item.payload.ViewRecent)
+              );
+              localStorage.setItem(
+                "user",
+                JSON.stringify({
+                  id:item.payload._id,
+                  Plane:item.payload.Plan,
+                  Email: item.payload.Email,
+                  Accesstoken: TakeAccessTokenEncrypt,
+                })
+              );
               navigate("/");
               break;
             }
@@ -66,13 +75,13 @@ export const LoginComponent = function () {
           // let user = JSON.parse(Object.keys(item.data)[0]);
           // Dispatch(SETLOGIN(true));
           // let itemData = item.result[0].viewRecently ?? [];
-          // 
+          //
           // localStorage.setItem("user", JSON.stringify(user));
-          // 
+          //
           // console.log(item.result[0].viewRecently);
         })
         .catch(function (e) {
-          console.log("Error Fetch",e);
+          console.log("Error Fetch", e);
         });
     }
   }, [properties.Submit]);

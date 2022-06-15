@@ -1,7 +1,11 @@
-import User = require("../Model/User");
+const User = require("../Model/User");
 
-class UserController{
-    update(req,res){
-        
-    }
+class UserController {
+  updateUser(req, res) {
+    console.log(req.body)
+    res.send("Update User Info")
+  }
 }
+
+
+module.exports = new UserController()

@@ -58,7 +58,7 @@ function ListMovieRow({ LinkFetch, Tittle, CurRecent, size }) {
       Type: "",
     };
   });
-  if (LinkFetch) {
+  
     useEffect(() => {
       if (LinkFetch) {
         async function Fetch() {
@@ -81,7 +81,7 @@ function ListMovieRow({ LinkFetch, Tittle, CurRecent, size }) {
         Fetch();
       }
     }, []);
-  }
+  
   return (
     <>
       <div className="Main-Container-ListMovie">
@@ -95,7 +95,7 @@ function ListMovieRow({ LinkFetch, Tittle, CurRecent, size }) {
               ? CurRecent.map(function (item, idx) {
                   console.log("Item Recent ", item);
                   return (
-                    <MovieItem key={idx} item={item} Type={properties.Type} />
+                    <MovieItem key={idx} item={item} Type={properties.Type} size={size}/>
                   );
                 })
               : properties.ArrCur.map(function (item, idx) {
