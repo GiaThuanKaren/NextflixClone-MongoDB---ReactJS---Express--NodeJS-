@@ -46,7 +46,10 @@ function MovieItem({ item, size, Type,func }) {
               isClose:true
             });
             return;
-          }else SetViewRecently(item);
+          }else {
+            item.Type=Type;
+            SetViewRecently(item);
+          }
           navigate(`/Detail?id=${item.id}&type=${Type}`);
         }}
         className={`MovieItem col l-2 m-3 c-6 ${size} ${Type}`}

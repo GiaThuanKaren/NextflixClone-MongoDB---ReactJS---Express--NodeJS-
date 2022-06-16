@@ -95,7 +95,7 @@ function ListMovieRow({ LinkFetch, Tittle, CurRecent, size }) {
               ? CurRecent.map(function (item, idx) {
                   console.log("Item Recent ", item);
                   return (
-                    <MovieItem key={idx} item={item} Type={properties.Type} size={size}/>
+                    <MovieItem key={idx} item={item} Type={item.Type} size={size}/>
                   );
                 })
               : properties.ArrCur.map(function (item, idx) {
