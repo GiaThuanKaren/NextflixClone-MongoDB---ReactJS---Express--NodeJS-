@@ -3,7 +3,7 @@ const Schema = moongoose.Schema;
 const User = new Schema(
   {
     Pass: { type: String,required:true},
-    ViewRecent: { type: String,default:""},
+    ViewRecent: { type: Array,default:[]},
     Email: { type: String,required:true },
     Plan: { type: String ,default:"Basic",required:true},
     Accesstoken:{ type: Array ,default:null},

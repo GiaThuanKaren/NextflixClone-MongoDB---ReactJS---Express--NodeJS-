@@ -26,6 +26,7 @@ const User = function () {
         body: JSON.stringify(ViewRecent),
       })
         .then((itemUpdated) => {
+          console.log("Deleted User Info In Local",itemUpdated)
           localStorage.removeItem("recent");
           localStorage.removeItem("user");
         })
