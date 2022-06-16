@@ -213,9 +213,12 @@ iframe{
     }
 }
 .Movie-Simimlar{
+    padding: 10px 0;
+    /* min-height: 400px; */
     flex-wrap: nowrap;
     overflow-y: hidden;
     overflow-x: auto;
+    align-items: center;
 }
 .Movie-Simimlar::-webkit-scrollbar{
     display: none;

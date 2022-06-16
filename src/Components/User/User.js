@@ -7,22 +7,23 @@ import "./User.css";
 
 const User = function () {
   const [isActive, SetisActive] = useState(false);
-  const User = JSON.stringify(localStorage.getItem("user"));
-  const ViewRecent = JSON.stringify(localStorage.getItem("recent"));
+  const User = JSON.parse(localStorage.getItem("user"));
+  const ViewRecent = JSON.parse(localStorage.getItem("recent"));
   const selectState = useSelector((state) => state);
-  console.log(selectState);
+  console.log(selectState,User);
   const dispatch = useDispatch();
   // const
   useEffect(() => {
     if (isActive) {
-      fetch(`http://localhost:5000/user?id=${User.id}`, {
+      console.log(`http://localhost:5000/user?id=${User.id}`)
+      fetch(`http://localhost:5000/user/${User.id}`, {
         method: "PUT",
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({ViewRecent}),
+        body: JSON.stringify(ViewRecent),
       })
         .then((itemUpdated) => {
           localStorage.removeItem("recent");

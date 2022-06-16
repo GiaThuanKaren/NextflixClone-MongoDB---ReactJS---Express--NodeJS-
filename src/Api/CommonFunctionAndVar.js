@@ -1,5 +1,5 @@
 export function SetViewRecently(movietiem) {
-  let Store = JSON.parse(localStorage.getItem("recent"));
+  let Store = JSON.parse( JSON.parse(JSON.parse(localStorage.getItem('recent'))));
   let res = Store.find(function (item, dix) {
     console.log(item, movietiem);
     return item.id == movietiem.id;

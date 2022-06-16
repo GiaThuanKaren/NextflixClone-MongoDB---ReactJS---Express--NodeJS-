@@ -20,8 +20,9 @@ function Home() {
   const GlobalState = useSelector(state=>state);
   console.log("Global State in Home Page ---",GlobalState)
   const [recentView, SetrecentView] = useState(() => {
-    let storeLocal = JSON.parse(localStorage.getItem("recent")) ?? [];
-    console.log("local recent ", storeLocal);
+    let storeLocal =JSON.parse( JSON.parse(JSON.parse(localStorage.getItem('recent')))) ?? [];
+    console.log("local recent ",JSON.parse( JSON.parse(JSON.parse(localStorage.getItem('recent')))));
+    
     return storeLocal;
   });
 
