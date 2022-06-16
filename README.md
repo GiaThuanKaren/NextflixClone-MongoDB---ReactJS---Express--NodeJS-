@@ -10,6 +10,7 @@ Demo : https://nextflixclone2022.netlify.app/
   - Đã responsive trên tablet và mobile
   - Đã kết nối đc đến MoongoDB , cho phép đăng ký , đăng nhâp , đăng xuất
   - Lưu kết quả xem gần đây
+  - Sử dụng JWT cho đăng ký , đăng nhập 
 
 ===============================================
 
