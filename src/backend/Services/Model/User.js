@@ -7,6 +7,7 @@ const User = new Schema(
     Email: { type: String,required:true },
     Plan: { type: String ,default:"Basic",required:true},
     Accesstoken:{ type: Array ,default:null},
+    LikedVideos:{ type: Array ,default:null},
   },
   {
     timestamps: true,

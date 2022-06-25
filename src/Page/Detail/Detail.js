@@ -107,10 +107,10 @@ const Detail = function () {
                   <div className="Movie-poster">
                     <FontAwesomeIcon
                       onClick={() => {
-                        addDoc(ColrefMyList, {
-                          Film: JSON.stringify(DetailMovie),
-                          Type: JSON.stringify(Type),
-                        });
+                        // addDoc(ColrefMyList, {
+                        //   Film: JSON.stringify(DetailMovie),
+                        //   Type: JSON.stringify(Type),
+                        // });
                       }}
                       className="Heart-Icon"
                       icon={faHeart}
