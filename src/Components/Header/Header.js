@@ -19,14 +19,28 @@ import Login_Register, {
 } from "../../Page/Login_Register/Login_Register";
 import { useSelector } from "react-redux";
 import PrivateRoute from "../../Routes/PrivateRoute";
-
+import { ThemeProvider, createTheme } from "@mui/material";
 export const MainHome = function () {
+  const light = createTheme({
+    palette: {
+      mode: "light",
+    },
+  });
+
+  const dark = {
+    palette: {
+      mode: "dark",
+    },
+  };
+  
   return (
     <>
-      <NavBar />
-      <Slider LinkFetch={Base_Url + FetchOption.fetchNextFlixOriginal} />
-      <Home />
-      <Footer />
+      <ThemeProvider theme={light}>
+        <NavBar />
+        <Slider LinkFetch={Base_Url + FetchOption.fetchNextFlixOriginal} />
+        <Home />
+        <Footer />
+      </ThemeProvider>
     </>
   );
 };
@@ -77,6 +91,7 @@ export const NavBar = function () {
   );
 };
 function MainComponent() {
+  
   const [state, SetState] = useState(false);
   const Handle = function () {
     SetState(!state);
@@ -94,6 +109,7 @@ function MainComponent() {
         <Route element={<PrivateRoute />}>
           <Route path="/MyList" element={<MyList />} />
         </Route>
+
         <Route path="/" element={<MainHome />} />
       </Routes>
     </>

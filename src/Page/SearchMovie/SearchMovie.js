@@ -8,8 +8,13 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import "../../grid.css";
 import "./SearchMovie.css";
+import { useParams, useRoutes } from "react-router-dom";
 
 function SearchMovie() {
+  const querfy=useParams()
+  // const router = useRoutes();
+  // const {query} =router.query
+  console.log("-------------",querfy)
   const params = new URLSearchParams(location.search).get("query");
   const CurState = useSelector((state) => state);
   const [Curpage, SetCurPage] = useState(1);
@@ -25,7 +30,7 @@ function SearchMovie() {
   useEffect(() => {
     console.log("Fetching...");
     // console.log(params.get('query'),params.get('data'))
-    fetch(`${Base_Url}/search/movie?${ApiKey}&query=${params}&page=${Curpage}`)
+    fetch(`${Base_Url}/search/multi?${ApiKey}&query=${params}&page=${Curpage}`)
       .then((res) => res.json())
       .then(function (items) {
         console.log(items);
@@ -44,7 +49,7 @@ function SearchMovie() {
         <div className="List-Movie-Search row">
           {properties.CurFilm.map(function (item, idx) {
             if (item.poster_path)
-              return <MovieItem key={idx} item={item} Type="movie" />;
+              return <MovieItem key={idx} item={item} size="medium" Type={item.media_type} />;
           })}
         </div>
         <div style={{display:"flex","justifyContent":"center",margin:"10px"}}>

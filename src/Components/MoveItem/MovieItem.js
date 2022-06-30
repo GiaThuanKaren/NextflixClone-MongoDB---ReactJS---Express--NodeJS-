@@ -48,6 +48,7 @@ function MovieItem({ item, size, Type,func }) {
             return;
           }else {
             item.Type=Type;
+            console.log(item,Type,item.Type)
             SetViewRecently(item);
           }
           navigate(`/Detail?id=${item.id}&type=${Type}`);

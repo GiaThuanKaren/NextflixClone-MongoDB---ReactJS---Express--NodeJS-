@@ -168,11 +168,31 @@ iframe{
     text-align: center;
 }
 
-
+.Section-Watch-Film{
+    height: 700px;
+    margin: 10px 0; 
+    justify-content: space-between;
+}
+.iframvideo{
+    width: 100%;
+    height: 500px;
+}
+.Section-Watch-Film-item{
+    height: 700px;
+}
+.SuggestMovie{
+    display: flex;
+    flex-direction: column;
+}
 
 /* //table */
 @media (min-width:740px) and (max-width:1024px){
-
+    .Section-Watch-Film{
+        height: unset;
+    }
+    .Movie-Simimlar{
+        height: unset;
+    }
     .Movie-detail-contend{
         width: 100%;
         margin: 0 5px;
@@ -181,6 +201,12 @@ iframe{
 }
 
 @media (max-width:739px){
+    .Section-Watch-Film{
+        height: unset;
+    }
+    .Movie-Simimlar{
+        height: unset !important;
+    }
     .Movie-detail-contend{
         top:10%;
         left: 0;
@@ -213,10 +239,11 @@ iframe{
     }
 }
 .Movie-Simimlar{
+    height: 100%;
     padding: 10px 0;
     /* min-height: 400px; */
     flex-wrap: nowrap;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: auto;
     align-items: center;
 }

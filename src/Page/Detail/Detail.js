@@ -19,7 +19,7 @@ import NotFound from "../../Components/NotFound/NotFound";
 const CastItem = function ({ item }) {
   return (
     <>
-      <div className="CastItem l-2 m-5 c-5">
+      <div className="CastItem l-2 m-3 c-3">
         <div className="CastItem-image">
           <img src={`${ImageOption.w500}${item.profile_path}`} />
         </div>
@@ -157,19 +157,14 @@ const Detail = function () {
               <h3 style={{ color: "#fff" }}>
                 Movie {DetailMovie.name || DetailMovie.original_title}
               </h3>
-              <iframe
-                src={`https://www.2embed.ru/embed/tmdb/movie?id=${DetailMovie.id}`}
-              />
-              <h3>Credits</h3>
-              <div className="Cast-Movie row">
-                {Moviecredit.map(function (item, idx) {
-                  if (item.profile_path)
-                    return <CastItem key={idx} item={item} />;
-                })}
-              </div>
-
-              <h3>Movie Simimlar</h3>
-              <div className="Movie-Simimlar row">
+              {/* https://www.2embed.ru/embed/tmdb/movie?id=${DetailMovie.id} */}
+              <div className="row Section-Watch-Film">
+                <iframe
+                  className="iframvideo col l-9"
+                  allowFullScreen
+                  src={`https://2embed.org/embed/${DetailMovie.id}`}
+                />
+                <div className="col l-2 Movie-Simimlar row">
                 {MovieSimilar.length != 0
                   ? MovieSimilar.map(function (item, idx) {
                       return (
@@ -185,6 +180,32 @@ const Detail = function () {
                     })
                   : "hi not found"}
               </div>
+              </div>
+              {/* <h3>Credits</h3>
+              <div className="Cast-Movie row">
+                {Moviecredit.map(function (item, idx) {
+                  if (item.profile_path)
+                    return <CastItem key={idx} item={item} />;
+                })}
+              </div> */}
+
+              <h3>Movie Simimlar</h3>
+              {/* <div className="Movie-Simimlar row">
+                {MovieSimilar.length != 0
+                  ? MovieSimilar.map(function (item, idx) {
+                      return (
+                        <React.Fragment>
+                          <MovieItem
+                            item={item}
+                            key={idx}
+                            Type={Type}
+                            size="small"
+                          />
+                        </React.Fragment>
+                      );
+                    })
+                  : "hi not found"}
+              </div> */}
               <Footer />
             </div>
           </>
