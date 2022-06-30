@@ -25,7 +25,7 @@ function Home() {
     
     return storeLocal;
   });
-
+  
   return (
     <>
       <div className="Main-Home">
