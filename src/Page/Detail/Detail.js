@@ -31,8 +31,8 @@ const CastItem = function ({ item }) {
 const Detail = function () {
   const EleRef = useRef();
   const [loading, SetLoading] = useState(false);
-  const params = new URLSearchParams(location.search).get("id");
-  const Type = new URLSearchParams(location.search).get("type");
+  const params = new URLSearchParams(window.location.search).get("id");
+  const Type = new URLSearchParams(window.location.search).get("type");
   const FetchFuncs = FetchOption.FuncFetchParam;
   const [properties, Setproperties] = useState({
     DetailMovie: {},

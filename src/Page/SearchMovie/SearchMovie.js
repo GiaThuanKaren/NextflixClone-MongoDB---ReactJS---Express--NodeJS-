@@ -15,7 +15,7 @@ function SearchMovie() {
   // const router = useRoutes();
   // const {query} =router.query
   console.log("-------------",querfy)
-  const params = new URLSearchParams(location.search).get("query");
+  const params = new URLSearchParams(window.location.search).get("query");
   const CurState = useSelector((state) => state);
   const [Curpage, SetCurPage] = useState(1);
   const [properties, Setproperties] = useState({
