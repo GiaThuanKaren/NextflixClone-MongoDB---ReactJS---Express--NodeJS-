@@ -160,26 +160,27 @@ const Detail = function () {
               {/* https://www.2embed.ru/embed/tmdb/movie?id=${DetailMovie.id} */}
               <div className="row Section-Watch-Film">
                 <iframe
-                  className="iframvideo col l-9"
+                  className="iframvideo col l-10 m-9 s-9"
                   allowFullScreen
                   src={`https://2embed.org/embed/${DetailMovie.id}`}
                 />
-                <div className="col l-2 Movie-Simimlar row">
-                {MovieSimilar.length != 0
-                  ? MovieSimilar.map(function (item, idx) {
-                      return (
-                        <React.Fragment>
-                          <MovieItem
-                            item={item}
-                            key={idx}
-                            Type={Type}
-                            size="small"
-                          />
-                        </React.Fragment>
-                      );
-                    })
-                  : "hi not found"}
-              </div>
+                <div className="col l-2 m-3 s-3 Movie-Simimlar row">
+                  {MovieSimilar.length != 0
+                    ? MovieSimilar.map(function (item, idx) {
+                        return (
+                          <React.Fragment>
+                            <MovieItem
+                              widthCustom={["l-12","m-12","c-6"]}
+                              item={item}
+                              key={idx}
+                              Type={Type}
+                              size="small"
+                            />
+                          </React.Fragment>
+                        );
+                      })
+                    : "hi not found"}
+                </div>
               </div>
               {/* <h3>Credits</h3>
               <div className="Cast-Movie row">

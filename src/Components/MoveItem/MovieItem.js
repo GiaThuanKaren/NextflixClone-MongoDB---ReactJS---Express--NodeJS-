@@ -30,11 +30,12 @@ const ModalOveView=function(){
 }
 
 
-function MovieItem({ item, size, Type,func }) {
+function MovieItem({ item, size, Type,func,widthCustom }) {
   const GlobalState = useSelector((state) => state);
   //   console.log(GlobalState)
   const dispath = useDispatch();
   const navigate = useNavigate();
+  
   return (
     <>
       <div
@@ -51,9 +52,10 @@ function MovieItem({ item, size, Type,func }) {
             console.log(item,Type,item.Type)
             SetViewRecently(item);
           }
+          
           navigate(`/Detail?id=${item.id}&type=${Type}`);
         }}
-        className={`MovieItem col l-2 m-3 c-6 ${size} ${Type}`}
+        className={`MovieItem col ${widthCustom ? widthCustom.join(" ") : "l-2 m-3 c-6"} ${size} ${Type}`}
       >
         {/* <ModalOveView/> */}
         <div className="Overlay-MovieTiem">
