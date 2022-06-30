@@ -1,4 +1,4 @@
-Demo : https://nextflixclone2022.netlify.app/
+
 
 # Các công nghệ , ngôn ngữ được sử dụng 
   - FrontEnd : React JS , Redux , FontAwesomeIcon, Material UI 
