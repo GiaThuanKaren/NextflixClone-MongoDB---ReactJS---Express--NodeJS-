@@ -21,26 +21,16 @@ import { useSelector } from "react-redux";
 import PrivateRoute from "../../Routes/PrivateRoute";
 import { ThemeProvider, createTheme } from "@mui/material";
 export const MainHome = function () {
-  const light = createTheme({
-    palette: {
-      mode: "light",
-    },
-  });
 
-  const dark = {
-    palette: {
-      mode: "dark",
-    },
-  };
   
   return (
     <>
-      <ThemeProvider theme={light}>
+      
         <NavBar />
         <Slider LinkFetch={Base_Url + FetchOption.fetchNextFlixOriginal} />
         <Home />
         <Footer />
-      </ThemeProvider>
+      
     </>
   );
 };

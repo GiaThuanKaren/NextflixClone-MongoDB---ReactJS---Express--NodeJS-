@@ -162,7 +162,8 @@ const Detail = function () {
                 <iframe
                   className="iframvideo col l-10 m-9 s-9"
                   allowFullScreen
-                  src={`https://2embed.org/embed/${DetailMovie.id}`}
+                  src="https://aa.nguonphimmoi.com/share/4e46e93a054f94c059e1fa4701f5a892"
+                  // src={`https://2embed.org/embed/${DetailMovie.id}`}
                 />
                 <div className="col l-2 m-3 s-3 Movie-Simimlar row">
                   {MovieSimilar.length != 0

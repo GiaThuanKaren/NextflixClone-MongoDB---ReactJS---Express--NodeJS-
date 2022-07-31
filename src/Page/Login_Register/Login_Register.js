@@ -17,8 +17,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AES, DES } from "crypto-js";
 import { SETCURFILM, SETLOGIN } from "../../Redux/Actions/Actions";
-import   Keys  from "../../util/Key";
-
+import Keys from "../../util/Key";
 
 export const LoginComponent = function () {
   const navigate = useNavigate();
@@ -50,6 +49,7 @@ export const LoginComponent = function () {
         .then((item) => item.json())
         .then(function (item) {
           console.log("OKELOGIN", item);
+          alert(item.status)
           switch (item.code) {
             case 200: {
               const TakeAccessTokenEncrypt = AES.encrypt(
@@ -64,8 +64,8 @@ export const LoginComponent = function () {
               localStorage.setItem(
                 "user",
                 JSON.stringify({
-                  id:item.payload._id,
-                  Plane:item.payload.Plan,
+                  id: item.payload._id,
+                  Plane: item.payload.Plan,
                   Email: item.payload.Email,
                   Accesstoken: TakeAccessTokenEncrypt,
                 })
