@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { AES, DES } from "crypto-js";
 import { SETCURFILM, SETLOGIN } from "../../Redux/Actions/Actions";
 import Keys from "../../util/Key";
+import { Button } from "@mui/material";
 
 export const LoginComponent = function () {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ export const LoginComponent = function () {
         .then((item) => item.json())
         .then(function (item) {
           console.log("OKELOGIN", item);
-          alert(item.status)
+          alert(item.status);
           switch (item.code) {
             case 200: {
               const TakeAccessTokenEncrypt = AES.encrypt(
@@ -142,7 +143,7 @@ export const LoginComponent = function () {
           >
             <p style={{ color: " rgb(98 95 95)" }}>New to NextFlix</p>
             <Link style={{ color: "#fff" }} to="/Login_Register/regis">
-              Sign up Now
+              Sign Up
             </Link>
           </div>
         </div>
@@ -423,7 +424,7 @@ export const RegisterComponent = function () {
                     type="password"
                   />
                 </div>
-                <div
+                {/* <div
                   onClick={(e) => {
                     console.log("Clcik ing");
                     Setproperties({
@@ -441,7 +442,26 @@ export const RegisterComponent = function () {
                   }}
                 >
                   Đăng Ký
-                </div>
+                </div> */}
+                <Button
+                  onClick={(e) => {
+                    console.log("Clcik ing");
+                    Setproperties({
+                      ...properties,
+                      Submit: true,
+                    });
+                  }}
+                  sx={{
+                    color: "#ffff",
+                    fontWeight: "bold",
+                    backgroundColor: "rgb(9, 113, 248)",
+                    width: "100%",
+                    margin: "0px 0",
+                  }}
+                  variant="contained"
+                >
+                  Đăng Ký
+                </Button>
               </div>
             </div>
           </div>
