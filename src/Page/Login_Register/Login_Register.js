@@ -32,7 +32,7 @@ export const LoginComponent = function () {
     if (properties.Submit) {
       fetch(
         // `http://localhost:81/backend/Api/Customer.php?Email=${properties.Email}&pass=${properties.Pass}&login`
-        `http://localhost:5000/login`,
+        `https://backendnextflixclone.herokuapp.com/login`,
         {
           method: "POST",
           mode: "cors",
